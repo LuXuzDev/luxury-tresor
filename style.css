@@ -387,12 +387,15 @@ main {
     
     .botones-carrito {
         flex-direction: column-reverse;
-        gap: 10px;
+        gap: 8px; 
+        margin-top: 15px;
     }
     
     .btn-enviar, .btn-cerrar {
-        width: 85%;
-        margin: 5px 0;
+        width: 100%; 
+        margin: 0;
+        padding: 10px;
+        font-size: 0.9rem; 
     }
     
     .item-carrito {

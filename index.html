@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,13 +8,14 @@
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-    
+
     <!-- Añade un favicon temporal -->
-    <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💎</text></svg>">
+    <link rel="icon"
+        href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>💎</text></svg>">
     <link rel="icon" href="data:,">
 
     <link rel="stylesheet" href="style.css">
-    
+
     <title>LuXury Trésor | Catálogo</title>
 </head>
 
@@ -31,7 +33,7 @@
                 <li><a href="#inicio">Inicio</a></li>
                 <li><a href="#anillos">Anillos</a></li>
                 <li><a href="#collares">Collares</a></li>
-                <li><a href="#collares">Pulseras</a></li>
+                <li><a href="#pulseras">Pulseras</a></li>
                 <li><a href="#conjuntos">Conjuntos</a></li>
             </ul>
         </div>
@@ -40,55 +42,54 @@
     <main>
         <section id="anillos" class="categoria">
             <h2>Anillos</h2>
-            <div class="productos" id="lista-productos">
-                <!-- Los productos se generarán con JavaScript -->
-            </div>
+            <div class="productos></div>
         </section>
 
-        <section id="collares" class="categoria">
-            <h2>Collares</h2>
-            
+        <section id=" collares" class="categoria">
+                <h2>Collares</h2>
+                <div class="productos></div>
         </section>
 
-        <section id="pulseras" class="categoria">
-            <h2>Pulseras</h2>
-            
+        <section id=" pulseras" class="categoria">
+                    <h2>Pulseras</h2>
+                    <div class="productos></div>
         </section>
 
-        <section id="conjuntos" class="categoria">
-            <h2>Conjuntos</h2>
-            
+        <section id=" conjuntos" class="categoria">
+                        <h2>Conjuntos</h2>
+                        <div class="productos></div>
         </section>
     </main>
 
     <!-- Botón flotante del carrito -->
-    <div class="carrito-flotante" id="btn-carrito">
-        🛒
-        <span id="contador-carrito">0</span>
-    </div>
+    <div class=" carrito-flotante" id="btn-carrito">
+                            🛒
+                            <span id="contador-carrito">0</span>
+                        </div>
 
-    <!-- Modal del carrito -->
-    <div class="modal-carrito" id="modal-carrito">
-        <div class="modal-contenido">
-            <div class="modal-header">
-                <h3>Tu Carrito</h3>
-                <button class="cerrar-modal" id="cerrar-modal">&times;</button>
-            </div>
-            <div class="modal-body" id="modal-body">
-                <!-- Los productos del carrito se mostrarán aquí -->
-            </div>
-            <div class="modal-footer">
-                <div class="total-carrito">Total: <span id="total-carrito">$0</span></div>
-                <button class="btn-enviar" id="enviar-pedido">Enviar Pedido por WhatsApp</button>
-            </div>
-        </div>
-    </div>
+                        <!-- Modal del carrito -->
+                        <div class="modal-carrito" id="modal-carrito">
+                            <div class="modal-contenido">
+                                <div class="modal-header">
+                                    <h3>Tu Carrito</h3>
+                                    <button class="cerrar-modal" id="cerrar-modal">&times;</button>
+                                </div>
+                                <div class="modal-body" id="modal-body">
+                                    <!-- Los productos del carrito se mostrarán aquí -->
+                                </div>
+                                <div class="modal-footer">
+                                    <div class="total-carrito">Total: <span id="total-carrito">$0</span></div>
+                                    <button class="btn-enviar" id="enviar-pedido">Enviar Pedido por WhatsApp</button>
+                                </div>
+                            </div>
+                        </div>
 
-    <footer>
-        <p>&copy; 2024 Luxury Trésor. Todos los derechos reservados.</p>
-    </footer>
+                        <footer>
+                            <p>&copy; 2024 Luxury Trésor. Todos los derechos reservados.</p>
+                        </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-    <script src="app.js"></script>
+                        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+                        <script src="app.js"></script>
 </body>
-</html> 
+
+</html>

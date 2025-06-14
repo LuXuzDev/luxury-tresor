@@ -1,18 +1,15 @@
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        // 1. Cargar datos (usando URL absoluta para GitHub Pages)
-        const response = await fetch('https://luxuzdev.github.io/luxury-tresor/productos.json');
+        // 1. Cargar datos
+        const response = await fetch('productos.json');
         
-        if (!response.ok) {
-            throw new Error(`Error al cargar productos: ${response.status}`);
-        }
+        if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
         
         const productos = await response.json();
         console.log('Productos cargados:', productos);
         
-        // 2. Renderizar solo productos disponibles
-        const disponibles = productos.filter(p => p.Disponible > 0);
-        renderProductos(disponibles);
+        // 2. Filtrar y renderizar
+        renderProductos(productos.filter(p => p.Disponible > 0));
     } catch (error) {
         console.error('Error:', error);
         showError(error);
@@ -20,23 +17,34 @@ document.addEventListener('DOMContentLoaded', async () => {
 });
 
 function renderProductos(productos) {
-    // Contenedores actualizados para coincidir con tu HTML
+    // Contenedores actualizados para MATCHEAR TU HTML
     const contenedores = {
         "Anillos": document.getElementById("lista-productos"),
-        "Collares": document.getElementById("collares-container"),
-        "Pulseras": document.getElementById("pulseras-container"),
-        "Conjuntos": document.getElementById("conjuntos-container")
+        "Collares": document.querySelector("#collares .productos"),
+        "Pulseras": document.querySelector("#pulseras .productos"),
+        "Conjuntos": document.querySelector("#conjuntos .productos")
     };
     
-    // Limpiar contenedores
-    Object.values(contenedores).forEach(container => {
-        if (container) container.innerHTML = '';
+    // Crear contenedores si no existen
+    Object.entries(contenedores).forEach(([categoria, container]) => {
+        if (!container) {
+            const section = document.getElementById(categoria.toLowerCase());
+            if (section) {
+                section.innerHTML += `<div class="productos"></div>`;
+                contenedores[categoria] = section.querySelector('.productos');
+            }
+        }
     });
 
-    // Añadir productos
+    // Limpiar y renderizar
+    Object.values(contenedores).forEach(c => c && (c.innerHTML = ''));
+    
     productos.forEach(producto => {
         const container = contenedores[producto.Categoria];
-        if (!container) return;
+        if (!container) {
+            console.warn(`Categoría sin contenedor: ${producto.Categoria}`);
+            return;
+        }
         
         container.innerHTML += `
             <div class="producto">
@@ -52,20 +60,13 @@ function renderProductos(productos) {
 }
 
 function showError(error) {
-    const main = document.querySelector('main');
-    if (main) {
-        main.innerHTML = `
-            <div class="error" style="
-                padding: 20px;
-                background: #ffebee;
-                border-left: 4px solid #f44336;
-                margin: 20px;
-            ">
-                <h3>Error al cargar el catálogo</h3>
-                <p>${error.message}</p>
-                <small>Por favor intenta recargar la página</small>
-            </div>
-            ${main.innerHTML}
-        `;
-    }
+    const errorHtml = `
+        <div class="error">
+            <h3>⚠️ Error al cargar productos</h3>
+            <p>${error.message}</p>
+            <button onclick="location.reload()">Recargar</button>
+        </div>
+    `;
+    
+    document.querySelector('main').insertAdjacentHTML('afterbegin', errorHtml);
 }

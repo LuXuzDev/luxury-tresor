@@ -1,7 +1,37 @@
 // Carrito global
 let carrito = [];
 
-function renderProductos(productos) {function renderProductos(productos) {
+document.addEventListener('DOMContentLoaded', async () => {
+    try {
+        // 1. Cargar datos del JSON con timestamp para evitar caché
+        const response = await fetch('productos.json?' + new Date().getTime());
+        
+        if (!response.ok) {
+            throw new Error(`Error al cargar productos: ${response.status}`);
+        }
+        
+        const productos = await response.json();
+        console.log('Productos cargados:', productos);
+        
+        // 2. Filtrar productos disponibles y renderizar
+        const productosDisponibles = productos.filter(p => p.Disponible > 0);
+        renderProductos(productosDisponibles);
+        
+        // Inicialización del menú responsive
+        document.getElementById('menu-toggle')?.addEventListener('click', function() {
+            document.getElementById('menu')?.classList.toggle('active');
+        });
+        
+        // Evento para el icono del carrito
+        document.getElementById('btn-carrito').addEventListener('click', mostrarCarrito);
+        
+    } catch (error) {
+        console.error('Error al cargar el catálogo:', error);
+        mostrarError(error);
+    }
+});
+
+function renderProductos(productos) {
     const baseUrl = 'https://raw.githubusercontent.com/LuXuzDev/luxury-tresor/main/';
     const baseImagePath = baseUrl + 'images/';
     
@@ -65,14 +95,12 @@ function renderProductos(productos) {function renderProductos(productos) {
     });
 }
 
-// Funciones para los botones
-function pedirPorWhatsapp(producto) {
-    const mensaje = `Hola, me interesa el producto: ${producto.Nombre} ($${producto.Precio})`;
-    const urlWhatsapp = `https://wa.me/+5353796979?text=${encodeURIComponent(mensaje)}`;
+function pedirProductoWhatsApp(producto) {
+    const mensaje = `¡Hola! Estoy interesado en el producto: %0A%0A*${producto.Nombre}*%0A*Precio:* $${producto.Precio}%0A*Descripción:* ${producto.Descripcion || 'Sin descripción'}`;
+    const urlWhatsapp = `https://wa.me/5353796979?text=${mensaje}`;
     window.open(urlWhatsapp, '_blank');
 }
 
-// Función mejorada para agregar al carrito
 function agregarAlCarrito(producto) {
     const productoExistente = carrito.find(item => item.Nombre === producto.Nombre);
     
@@ -86,100 +114,91 @@ function agregarAlCarrito(producto) {
     }
     
     producto.Disponible--;
-    actualizarStockVisual(producto.id, producto.Disponible);
+    actualizarIconoCarrito();
 }
 
 function actualizarStockVisual(productoId, nuevoStock) {
-    const stockElements = document.querySelectorAll(`.producto[data-id="${productoId}"] .stock`);
-    const botonesCarrito = document.querySelectorAll(`.producto[data-id="${productoId}"] .btn-carrito`);
+    const productoElements = document.querySelectorAll(`.producto[data-id="${productoId}"]`);
     
-    stockElements.forEach(el => el.textContent = `${nuevoStock} disponibles`);
-    botonesCarrito.forEach(btn => {
-        btn.disabled = nuevoStock <= 0;
-        btn.textContent = nuevoStock <= 0 ? 'Agotado' : 'Añadir al carrito';
+    productoElements.forEach(element => {
+        const stockElement = element.querySelector('.stock');
+        const btnCarrito = element.querySelector('.btn-carrito');
+        
+        if (stockElement) stockElement.textContent = `${nuevoStock} disponibles`;
+        if (btnCarrito) {
+            btnCarrito.disabled = nuevoStock <= 0;
+            btnCarrito.textContent = nuevoStock <= 0 ? 'Agotado' : 'Agregar al carrito';
+        }
     });
 }
 
-// Actualiza el ícono del carrito
 function actualizarIconoCarrito() {
-    const iconoCarrito = document.getElementById('carrito-icono');
+    const iconoCarrito = document.getElementById('contador-carrito');
     if (iconoCarrito) {
         const totalItems = carrito.reduce((sum, item) => sum + item.cantidad, 0);
-        iconoCarrito.setAttribute('data-count', totalItems);
+        iconoCarrito.textContent = totalItems;
     }
 }
 
-// Mostrar modal del carrito
 function mostrarCarrito() {
-    const modal = document.createElement('div');
-    modal.className = 'modal-carrito';
-    modal.innerHTML = `
-        <div class="modal-contenido">
-            <h2>Tu Pedido</h2>
-            <div class="items-carrito">
-                ${carrito.length === 0 
-                    ? '<p>El carrito está vacío</p>' 
-                    : carrito.map(item => `
-                        <div class="item-carrito">
-                            <span>${item.Nombre} x${item.cantidad}</span>
-                            <span>$${item.Precio * item.cantidad}</span>
-                        </div>
-                    `).join('')}
-            </div>
-            <div class="total-carrito">
-                Total: $${carrito.reduce((sum, item) => sum + (item.Precio * item.cantidad), 0)}
-            </div>
-            <div class="botones-carrito">
-                <button class="btn-cerrar">Seguir Comprando</button>
-                ${carrito.length > 0 
-                    ? '<button class="btn-whatsapp-carrito">Pedir por WhatsApp</button>' 
-                    : ''}
-            </div>
-        </div>
-    `;
-
-    // Event listeners para el modal
-    modal.querySelector('.btn-cerrar').addEventListener('click', () => {
-        document.body.removeChild(modal);
-    });
+    const modal = document.getElementById('modal-carrito');
+    const modalBody = document.getElementById('modal-body');
+    const totalElement = document.getElementById('total-carrito');
     
+    modal.style.display = 'flex';
+    
+    modalBody.innerHTML = carrito.length === 0 
+        ? '<p>El carrito está vacío</p>' 
+        : carrito.map(item => `
+            <div class="item-carrito">
+                <span>${item.Nombre} x${item.cantidad}</span>
+                <span>$${item.Precio * item.cantidad}</span>
+            </div>
+        `).join('');
+    
+    
+    // Configurar botón de WhatsApp del modal
+    const btnWhatsappModal = document.getElementById('enviar-pedido');
     if (carrito.length > 0) {
-        modal.querySelector('.btn-whatsapp-carrito').addEventListener('click', enviarPedidoWhatsApp);
+        btnWhatsappModal.style.display = 'block';
+        btnWhatsappModal.addEventListener('click', enviarPedidoWhatsApp);
+    } else {
+        btnWhatsappModal.style.display = 'none';
     }
-
-    document.body.appendChild(modal);
 }
 
-// Enviar pedido por WhatsApp
 function enviarPedidoWhatsApp() {
-    const numeroWhatsApp = '549TU_NUMERO'; // Reemplaza con tu número
     let mensaje = '¡Hola! Quiero hacer este pedido:\n\n';
     
     carrito.forEach(item => {
-        mensaje += `- ${item.Nombre} x${item.cantidad} | $${item.Precio * item.cantidad}\n`;
+        mensaje += `- ${item.Nombre} x${item.cantidad} }\n`;
     });
     
-    mensaje += `\nTotal: $${carrito.reduce((sum, item) => sum + (item.Precio * item.cantidad), 0)}`;
     
-    const urlWhatsApp = `https://wa.me/${numeroWhatsApp}?text=${encodeURIComponent(mensaje)}`;
+    const urlWhatsApp = `https://wa.me/5353796979?text=${encodeURIComponent(mensaje)}`;
     window.open(urlWhatsApp, '_blank');
     
     // Vaciar carrito después de enviar
     carrito = [];
     actualizarIconoCarrito();
-    document.querySelector('.modal-carrito').remove();
+    document.getElementById('modal-carrito').style.display = 'none';
 }
 
-// Inicialización del carrito
-document.addEventListener('DOMContentLoaded', () => {
-    // ... (tu código existente de carga de productos)
-    
-    // Evento para el icono del carrito
-    document.getElementById('carrito-icono').addEventListener('click', mostrarCarrito);
-});
-
-// Opcional: Inicialización del menú responsive
-document.getElementById('menu-toggle')?.addEventListener('click', function() {
-    document.getElementById('menu')?.classList.toggle('active');
-});
+function mostrarError(error) {
+    const main = document.querySelector('main');
+    if (main) {
+        main.insertAdjacentHTML('afterbegin', `
+            <div class="error-mensaje">
+                <h3>⚠️ Error al cargar el catálogo</h3>
+                <p>${error.message}</p>
+                <small>Por favor recarga la página o intenta más tarde</small>
+                <button onclick="window.location.reload()">Recargar Página</button>
+            </div>
+        `);
+    }
 }
+
+// Cerrar modal al hacer clic en el botón
+document.getElementById('cerrar-modal')?.addEventListener('click', () => {
+    document.getElementById('modal-carrito').style.display = 'none';
+});

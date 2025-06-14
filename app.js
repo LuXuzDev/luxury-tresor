@@ -153,13 +153,16 @@ function mostrarCarrito() {
 
 
 function pedirProductoWhatsApp(producto) {
-    const mensaje = `¡Hola! Estoy interesado/a en este producto:\n\n` +
-                   `*${producto.Nombre}*\n` +
-                   `Ref: ${producto.id || 'N/A'}\n\n` +
-                   `¿Podrían confirmarme:\n` +
-                   `1. Disponibilidad\n` +
-                   `2. Forma de pago\n` +
-                   `3. Tiempo de entrega`;
+    const mensaje = [
+        '¡Hola! Estoy interesado/a en este producto:',
+        '',
+        `*${producto.Nombre}*`,
+        '',
+        '¿Podrían confirmarme:',
+        '1. Disponibilidad',
+        '2. Forma de pago',
+        '3. Tiempo de entrega'
+    ].join('%0A');
     
     window.open(`https://wa.me/${numero}?text=${mensaje}`, '_blank');
 }
@@ -167,12 +170,15 @@ function pedirProductoWhatsApp(producto) {
 
 // Función para pedidos del carrito (versión mejorada)
 function enviarPedidoWhatsApp() {
-    let mensaje = `¡Buen día! Quisiera solicitar estos productos:\n\n` +
-                 carrito.map(item => `▸ ${item.Nombre} (Cantidad: ${item.cantidad})`).join('\n') +
-                 `\n\nPor favor indíquenme:\n` +
-                 `1. Disponibilidad de los items\n` +
-                 `2. Total a pagar\n` +
-                 `3. Opciones de envío`;
+    let mensaje = [
+        '¡Buen día! Quisiera solicitar estos productos:',
+        '',
+        ...carrito.map(item => `▸ ${item.Nombre} (Cantidad: ${item.cantidad})`),
+        '',
+        'Por favor indíquenme:',
+        '1. Disponibilidad de los items',
+        '2. Total a pagar',
+    ].join('%0A'); 
     
     window.open(`https://wa.me/${numero}?text=${mensaje}`, '_blank');
     

@@ -90,7 +90,6 @@ function renderProductos(productos) {
         productoElement.querySelector('.btn-carrito').addEventListener('click', () => {
             if (producto.Disponible > 0) {
                 agregarAlCarrito(producto);
-                actualizarStockVisual(producto.id, producto.Disponible - 1);
             }
         });
     });
@@ -113,21 +112,6 @@ function agregarAlCarrito(producto) {
     actualizarIconoCarrito();
 }
 
-
-function actualizarStockVisual(productoId, nuevoStock) {
-    const productoElements = document.querySelectorAll(`.producto[data-id="${productoId}"]`);
-    
-    productoElements.forEach(element => {
-        const stockElement = element.querySelector('.stock');
-        const btnCarrito = element.querySelector('.btn-carrito');
-        
-        if (stockElement) stockElement.textContent = `${nuevoStock} disponibles`;
-        if (btnCarrito) {
-            btnCarrito.disabled = nuevoStock <= 0;
-            btnCarrito.textContent = nuevoStock <= 0 ? 'Agotado' : 'Agregar al carrito';
-        }
-    });
-}
 
 
 function actualizarIconoCarrito() {
@@ -177,7 +161,7 @@ function pedirProductoWhatsApp(producto) {
                    `2. Forma de pago\n` +
                    `3. Tiempo de entrega`;
     
-    window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`, '_blank');
+    window.open(`https://wa.me/${numero}?text=${mensaje}`, '_blank');
 }
 
 
@@ -190,8 +174,7 @@ function enviarPedidoWhatsApp() {
                  `2. Total a pagar\n` +
                  `3. Opciones de envío`;
     
-    const urlWhatsApp = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
-    window.open(urlWhatsApp, '_blank');
+    window.open(`https://wa.me/${numero}?text=${mensaje}`, '_blank');
     
     // Vaciar carrito
     carrito = [];

@@ -156,7 +156,6 @@ function mostrarCarrito() {
             </div>
         `).join('');
     
-    
     // Configurar botón de WhatsApp del modal
     const btnWhatsappModal = document.getElementById('enviar-pedido');
     if (carrito.length > 0) {
@@ -169,11 +168,6 @@ function mostrarCarrito() {
 
 function enviarPedidoWhatsApp() {
     let mensaje = '¡Hola! Quiero hacer este pedido:\n\n';
-    
-    carrito.forEach(item => {
-        mensaje += `- ${item.Nombre} x${item.cantidad} }\n`;
-    });
-    
     
     const urlWhatsApp = `https://wa.me/5353796979?text=${encodeURIComponent(mensaje)}`;
     window.open(urlWhatsApp, '_blank');

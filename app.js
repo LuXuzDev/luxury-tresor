@@ -1,72 +1,90 @@
 document.addEventListener('DOMContentLoaded', async () => {
     try {
-        // 1. Cargar datos
-        const response = await fetch('productos.json');
+        // 1. Cargar datos del JSON con timestamp para evitar caché
+        const response = await fetch('productos.json?' + new Date().getTime());
         
-        if (!response.ok) throw new Error(`Error HTTP: ${response.status}`);
+        if (!response.ok) {
+            throw new Error(`Error al cargar productos: ${response.status}`);
+        }
         
         const productos = await response.json();
         console.log('Productos cargados:', productos);
         
-        // 2. Filtrar y renderizar
-        renderProductos(productos.filter(p => p.Disponible > 0));
+        // 2. Filtrar productos disponibles y renderizar
+        const productosDisponibles = productos.filter(p => p.Disponible > 0);
+        renderProductos(productosDisponibles);
     } catch (error) {
-        console.error('Error:', error);
-        showError(error);
+        console.error('Error al cargar el catálogo:', error);
+        mostrarError(error);
     }
 });
 
 function renderProductos(productos) {
-    // Contenedores actualizados para MATCHEAR TU HTML
+    // Configuración de rutas base
+    const baseUrl = 'https://luxuzdev.github.io/luxury-tresor/';
+    const baseImagePath = baseUrl + 'images/';
+    
+    // Contenedores por categoría (actualizados para tu HTML)
     const contenedores = {
         "Anillos": document.getElementById("lista-productos"),
-        "Collares": document.querySelector("#collares .productos"),
-        "Pulseras": document.querySelector("#pulseras .productos"),
-        "Conjuntos": document.querySelector("#conjuntos .productos")
+        "Collares": document.getElementById("collares-container"),
+        "Pulseras": document.getElementById("pulseras-container"),
+        "Conjuntos": document.getElementById("conjuntos-container")
     };
-    
-    // Crear contenedores si no existen
-    Object.entries(contenedores).forEach(([categoria, container]) => {
-        if (!container) {
-            const section = document.getElementById(categoria.toLowerCase());
-            if (section) {
-                section.innerHTML += `<div class="productos"></div>`;
-                contenedores[categoria] = section.querySelector('.productos');
-            }
-        }
+
+    // Limpiar contenedores
+    Object.values(contenedores).forEach(container => {
+        if (container) container.innerHTML = '';
     });
 
-    // Limpiar y renderizar
-    Object.values(contenedores).forEach(c => c && (c.innerHTML = ''));
-    
+    // Renderizar cada producto
     productos.forEach(producto => {
         const container = contenedores[producto.Categoria];
         if (!container) {
-            console.warn(`Categoría sin contenedor: ${producto.Categoria}`);
+            console.warn(`No se encontró contenedor para categoría: ${producto.Categoria}`);
             return;
         }
-        
+
+        // Manejo seguro de imágenes
+        const imagenUrl = producto.imagen 
+            ? `${baseImagePath}${producto.imagen}`
+            : `${baseUrl}placeholder.jpg`; // Imagen por defecto en raíz
+
         container.innerHTML += `
-            <div class="producto">
-                <img src="images/${producto.imagen || 'placeholder.jpg'}" 
-                     alt="${producto.Nombre}" 
-                     onerror="this.src='images/placeholder.jpg'">
-                <h3>${producto.Nombre}</h3>
-                <p><strong>$${producto.Precio}</strong></p>
-                <p>${producto.Disponible} disponibles</p>
+            <div class="producto" data-id="${producto.id || ''}">
+                <div class="imagen-container">
+                    <img src="${imagenUrl}" 
+                         alt="${producto.Nombre}"
+                         onerror="this.onerror=null;this.src='${baseUrl}placeholder.jpg'">
+                </div>
+                <div class="info-producto">
+                    <h3>${producto.Nombre}</h3>
+                    <p class="precio">$${producto.Precio.toLocaleString('es-ES')}</p>
+                    <p class="stock">${producto.Disponible} disponibles</p>
+                    ${producto.Descripcion ? `<p class="descripcion">${producto.Descripcion}</p>` : ''}
+                    <button class="btn-carrito">Añadir al carrito</button>
+                </div>
             </div>
         `;
     });
 }
 
-function showError(error) {
-    const errorHtml = `
-        <div class="error">
-            <h3>⚠️ Error al cargar productos</h3>
-            <p>${error.message}</p>
-            <button onclick="location.reload()">Recargar</button>
-        </div>
-    `;
-    
-    document.querySelector('main').insertAdjacentHTML('afterbegin', errorHtml);
+
+function mostrarError(error) {
+    const main = document.querySelector('main');
+    if (main) {
+        main.insertAdjacentHTML('afterbegin', `
+            <div class="error-mensaje">
+                <h3>⚠️ Error al cargar el catálogo</h3>
+                <p>${error.message}</p>
+                <small>Por favor recarga la página o intenta más tarde</small>
+                <button onclick="window.location.reload()">Recargar Página</button>
+            </div>
+        `);
+    }
 }
+
+// Opcional: Inicialización del menú responsive
+document.getElementById('menu-toggle')?.addEventListener('click', function() {
+    document.getElementById('menu')?.classList.toggle('active');
+});

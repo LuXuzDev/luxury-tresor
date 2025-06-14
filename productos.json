@@ -1,0 +1,52 @@
+[
+  {
+    "Nombre": "Floral Elegante",
+    "Precio": 10,
+    "Descripcion": "sadasd",
+    "Cantidad": 10,
+    "Cantidad Vendida": 8,
+    "Disponible": 2,
+    "Imagen": "a.png",
+    "Categoria": "Anillos"
+  },
+  {
+    "Nombre": "Corazon Brillante",
+    "Precio": 20,
+    "Descripcion": "asdasdsad",
+    "Cantidad": 5,
+    "Cantidad Vendida": 4,
+    "Disponible": 1,
+    "Imagen": "a.png",
+    "Categoria": "Collares"
+  },
+  {
+    "Nombre": "Solitario Clasico",
+    "Precio": 30,
+    "Descripcion": "qweqweqwe",
+    "Cantidad": 6,
+    "Cantidad Vendida": 3,
+    "Disponible": 3,
+    "Imagen": "a.png",
+    "Categoria": "Pulseras"
+  },
+  {
+    "Nombre": "Ocean",
+    "Precio": 40,
+    "Descripcion": "wqeqweqwe",
+    "Cantidad": 4,
+    "Cantidad Vendida": 1,
+    "Disponible": 3,
+    "Imagen": "a.png",
+    "Categoria": "Conjuntos"
+  },
+  {
+    "Nombre": "Ocean Red",
+    "Precio": 20,
+    "Descripcion": "adssad",
+    "Cantidad": 1,
+    "Cantidad Vendida": 1,
+    "Disponible": 0,
+    "Imagen": "a.png",
+    "Categoria": "Anillos"
+  }
+]

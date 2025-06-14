@@ -1,27 +1,24 @@
-// Cargar el Excel automáticamente al abrir la página
+// Cargar el JSON automáticamente al abrir la página
 document.addEventListener('DOMContentLoaded', function() {
-    const excelUrl = 'https://luxuzdev.github.io/luxury-tresor/raw/main/productos.xlsx'; 
+    const jsonUrl = 'https://luxuzdev.github.io/luxury-tresor/productos.json'; 
     
-    fetch(excelUrl)
+    fetch(jsonUrl)
         .then(response => {
-            if (!response.ok) throw new Error("No se pudo cargar el Excel");
-            return response.arrayBuffer();
+            if (!response.ok) throw new Error("No se pudo cargar el JSON");
+            return response.json();
         })
-        .then(data => {
-            const workbook = XLSX.read(new Uint8Array(data), { type: 'array' });
-            const firstSheet = workbook.Sheets[workbook.SheetNames[0]];
-            const productos = XLSX.utils.sheet_to_json(firstSheet);
-            
+        .then(productos => {
             // Filtrar productos disponibles (>0)
             const disponibles = productos.filter(p => p.Disponible > 0);
             renderProductos(disponibles);
         })
         .catch(error => {
             console.error("Error:", error);
-            document.body.innerHTML += `<p style="color:red">Error al cargar el catálogo. Verifica que el archivo 'productos.xlsx' exista.</p>`;
+            document.body.innerHTML += `<p style="color:red">Error al cargar el catálogo. Verifica que el archivo 'productos.json' exista.</p>`;
         });
 });
 
+// La función renderProductos se mantiene igual
 function renderProductos(productos) {
     const categorias = {
         "Anillos": document.getElementById("anillos-container"),
@@ -32,7 +29,7 @@ function renderProductos(productos) {
 
     // Limpiar contenedores
     Object.values(categorias).forEach(container => {
-        if (container.children.length > 1) { // Deja el <h2>
+        if (container.children.length > 1) {
             container.querySelectorAll('.producto').forEach(el => el.remove());
         }
     });

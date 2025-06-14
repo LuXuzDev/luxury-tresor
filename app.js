@@ -1,4 +1,3 @@
-// Cargar el JSON automáticamente al abrir la página
 document.addEventListener('DOMContentLoaded', function() {
     const jsonUrl = 'https://luxuzdev.github.io/luxury-tresor/productos.json'; 
     
@@ -8,18 +7,17 @@ document.addEventListener('DOMContentLoaded', function() {
             return response.json();
         })
         .then(productos => {
-            // Filtrar productos disponibles (>0)
             const disponibles = productos.filter(p => p.Disponible > 0);
             renderProductos(disponibles);
         })
         .catch(error => {
             console.error("Error:", error);
-            document.body.innerHTML += `<p style="color:red">Error al cargar el catálogo. Verifica que el archivo 'productos.json' exista.</p>`;
+            document.body.innerHTML += `<p style="color:red">Error al cargar el catálogo: ${error.message}</p>`;
         });
 });
 
-// La función renderProductos se mantiene igual
 function renderProductos(productos) {
+    const baseImagePath = 'https://luxuzdev.github.io/luxury-tresor/images/';
     const categorias = {
         "Anillos": document.getElementById("anillos-container"),
         "Collares": document.getElementById("collares-container"),
@@ -27,23 +25,31 @@ function renderProductos(productos) {
         "Conjuntos": document.getElementById("conjuntos-container")
     };
 
-    // Limpiar contenedores
+    // Limpiar contenedores (conservando el título h2)
     Object.values(categorias).forEach(container => {
-        if (container.children.length > 1) {
-            container.querySelectorAll('.producto').forEach(el => el.remove());
-        }
+        const children = Array.from(container.children);
+        children.forEach(child => {
+            if (child.tagName !== 'H2') child.remove();
+        });
     });
 
-    // Agregar productos
+    // Agregar productos con imágenes
     productos.forEach(producto => {
         const categoriaContainer = categorias[producto.Categoria];
         if (categoriaContainer) {
+            const imagenUrl = producto.imagen ? `${baseImagePath}${producto.imagen}` : 'placeholder.jpg';
+            
             categoriaContainer.innerHTML += `
                 <div class="producto">
-                    <h3>${producto.Nombre}</h3>
-                    <p><strong>Precio:</strong> $${producto.Precio}</p>
-                    <p><strong>Disponibles:</strong> ${producto.Disponible}</p>
-                    ${producto.Descripcion ? `<p>${producto.Descripcion}</p>` : ''}
+                    <div class="producto-imagen">
+                        <img src="${imagenUrl}" alt="${producto.Nombre}" loading="lazy">
+                    </div>
+                    <div class="producto-info">
+                        <h3>${producto.Nombre}</h3>
+                        <p><strong>Precio:</strong> $${producto.Precio}</p>
+                        <p><strong>Disponibles:</strong> ${producto.Disponible}</p>
+                        ${producto.Descripcion ? `<p class="descripcion">${producto.Descripcion}</p>` : ''}
+                    </div>
                 </div>
             `;
         }

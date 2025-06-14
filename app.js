@@ -52,7 +52,7 @@ function renderProductos(productos) {
         if (!container) return;
 
         const imagenUrl = producto.Imagen 
-            ? `${baseImagePath}${producto.Imagen.replace(/\.(png|jpe?g)$/i, '.JPG')}`
+            ? `${baseImagePath}${producto.Imagen}`
             : `${baseImagePath}placeholder.jpg`;
 
         const productoHTML = `
@@ -169,27 +169,26 @@ function mostrarCarrito() {
 
 
 function pedirProductoWhatsApp(producto) {
-    const mensaje = `¡Hola! Estoy interesado/a en este producto:%0A%0A` +
-                   `*${producto.Nombre}*%0A` +
-                   `Ref: ${producto.id || 'N/A'}%0A%0A` +
-                   `¿Podrían confirmarme disponibilidad y forma de pago?`;
+    const mensaje = `¡Hola! Estoy interesado/a en este producto:\n\n` +
+                   `*${producto.Nombre}*\n` +
+                   `Ref: ${producto.id || 'N/A'}\n\n` +
+                   `¿Podrían confirmarme:\n` +
+                   `1. Disponibilidad\n` +
+                   `2. Forma de pago\n` +
+                   `3. Tiempo de entrega`;
     
     window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`, '_blank');
 }
 
 
-
+// Función para pedidos del carrito (versión mejorada)
 function enviarPedidoWhatsApp() {
-    let mensaje = '¡Buen día! Quisiera solicitar estos productos:%0A%0A';
-    
-    carrito.forEach(item => {
-        mensaje += `▸ ${item.Nombre} (Cantidad: ${item.cantidad})%0A`;
-    });
-    
-    mensaje += '%0APor favor indíquenme:%0A' +
-               '1. Disponibilidad de los items%0A' +
-               '2. Total a pagar%0A' +
-               '3. Opciones de envío';
+    let mensaje = `¡Buen día! Quisiera solicitar estos productos:\n\n` +
+                 carrito.map(item => `▸ ${item.Nombre} (Cantidad: ${item.cantidad})`).join('\n') +
+                 `\n\nPor favor indíquenme:\n` +
+                 `1. Disponibilidad de los items\n` +
+                 `2. Total a pagar\n` +
+                 `3. Opciones de envío`;
     
     const urlWhatsApp = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
     window.open(urlWhatsApp, '_blank');

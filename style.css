@@ -249,10 +249,30 @@ main {
 
 .modal-contenido {
     background: white;
-    padding: 20px;
+    padding: 40px 20px 20px;
     border-radius: 8px;
     width: 90%;
     max-width: 500px;
+    position: relative;
+    max-height: 80vh;
+    overflow-y: auto;
+}
+
+.cerrar-modal {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--texto-oscuro);
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    padding: 5px;
+    z-index: 1;
+}
+
+.cerrar-modal:hover {
+    color: var(--dorado-oscuro);
 }
 
 .item-carrito {
@@ -274,6 +294,44 @@ main {
     display: flex;
     justify-content: space-between;
     margin-top: 20px;
+}
+
+.btn-cerrar {
+    background: var(--gris-claro);
+    color: var(--texto-oscuro);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-cerrar:hover {
+    background: #d0d0d0;
+}
+
+.btn-enviar {
+    background: var(--dorado);
+    color: var(--blanco);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    margin-left: 10px;
+}
+
+.btn-enviar:hover {
+    background: var(--dorado-oscuro);
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    border-top: 1px solid var(--gris-claro);
 }
 
 /* Responsive */
@@ -308,35 +366,33 @@ main {
         grid-template-columns: 1fr;
     }
 
-    /* Estilos específicos para el modal en móvil */
     .modal-contenido {
         width: 90%;
-        max-height: 80vh;
-        overflow-y: auto;
-        padding: 20px 15px;
+        padding: 40px 15px 15px;
+    }
+    
+    .cerrar-modal {
+        top: 10px;
+        right: 10px;
+        background: rgba(255,255,255,0.8);
+        border-radius: 50%;
+        width: 30px;
+        height: 30px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
     
     .botones-carrito {
-        flex-direction: column-reverse; /* Cerrar primero */
+        flex-direction: column-reverse;
         gap: 10px;
-        margin-top: 20px;
     }
     
     .btn-enviar, .btn-cerrar {
         width: 100%;
-        margin: 0;
-        padding: 12px;
-        font-size: 1rem;
+        margin: 5px 0;
     }
     
-    /* Botón de cerrar (X) en móvil */
-    .cerrar-modal {
-        top: 10px;
-        right: 10px;
-        font-size: 1.3rem;
-    }
-    
-    /* Ajuste de items del carrito */
     .item-carrito {
         flex-direction: column;
         gap: 5px;
@@ -348,58 +404,4 @@ footer {
     padding: 1.5rem;
     background: var(--blanco);
     margin-top: 2rem;
-}
-.btn-cerrar {
-    background: var(--gris-claro);
-    color: var(--texto-oscuro);
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s;
-}
-
-.btn-cerrar:hover {
-    background: #d0d0d0;
-}
-
-.btn-enviar {
-    background: var(--dorado);
-    color: var(--blanco);
-    border: none;
-    padding: 0.75rem 1.5rem;
-    border-radius: 4px;
-    cursor: pointer;
-    font-weight: bold;
-    transition: all 0.3s;
-    margin-left: 10px; /* Espacio entre botones */
-}
-
-.btn-enviar:hover {
-    background: var(--dorado-oscuro);
-}
-
-/* Alineación de botones en el footer del modal */
-.modal-footer {
-    display: flex;
-    justify-content: flex-end;
-    padding: 1.5rem;
-    border-top: 1px solid var(--gris-claro);
-}
-
-/* Estilo para el botón de cerrar modal (la "X") */
-.cerrar-modal {
-    background: none;
-    border: none;
-    font-size: 1.5rem;
-    cursor: pointer;
-    color: var(--texto-oscuro);
-    position: absolute;
-    top: 15px;
-    right: 15px;
-}
-
-.cerrar-modal:hover {
-    color: var(--dorado-oscuro);
 }

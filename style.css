@@ -1,24 +1,10 @@
-/* Fuentes Glamor */
-@font-face {
-    font-family: 'Glamor';
-    src: url('fonts/Glamor-Regular.woff2') format('woff2'),
-         url('https://cdn.tudominio.com/fonts/Glamor-Regular.woff2') format('woff2');
-    font-weight: normal;
-    font-display: swap;
-}
-@font-face {
-    font-family: 'Glamor';
-    src: url('fonts/Glamor-Bold.woff2') format('woff2'),
-         url('https://cdn.tudominio.com/fonts/Glamor-Bold.woff2') format('woff2');
-    font-weight: normal;
-    font-display: swap;
-}
+/* Fuente temporal - Montserrat */
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap');
 
-/* Aplicar la fuente */
+/* Definición de la fuente temporal */
 body {
-    font-family: 'Glamor', sans-serif;
+    font-family: 'Montserrat', sans-serif;
 }
-
 :root {
     --dorado: #d4af37;
     --dorado-claro: #f5d062;

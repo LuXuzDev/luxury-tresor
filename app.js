@@ -1,6 +1,6 @@
 // Cargar el Excel automáticamente al abrir la página
 document.addEventListener('DOMContentLoaded', function() {
-    const excelUrl = 'productos.xlsx'; // Ruta relativa al archivo en tu repo
+    const excelUrl = 'https://luxuzdev.github.io/luxury-tresor/raw/main/productos.xlsx'; 
     
     fetch(excelUrl)
         .then(response => {

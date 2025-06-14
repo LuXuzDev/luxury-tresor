@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', function() {
-    const jsonUrl = 'https://luxuzdev.github.io/luxury-tresor/productos.json'; 
+    const jsonUrl = 'https://luxuzdev.github.io/luxury-tresor/productos.json'+ Date.now(); 
     
     fetch(jsonUrl)
         .then(response => {

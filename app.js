@@ -1,5 +1,6 @@
 // Carrito global
 let carrito = [];
+var numero = 5353796979;
 
 document.addEventListener('DOMContentLoaded', async () => {
     try {
@@ -95,11 +96,6 @@ function renderProductos(productos) {
     });
 }
 
-function pedirProductoWhatsApp(producto) {
-    const mensaje = `¡Hola! Estoy interesado en el producto: %0A%0A*${producto.Nombre}*%0A*Precio:* $${producto.Precio}%0A*Descripción:* ${producto.Descripcion || 'Sin descripción'}`;
-    const urlWhatsapp = `https://wa.me/5353796979?text=${mensaje}`;
-    window.open(urlWhatsapp, '_blank');
-}
 
 function agregarAlCarrito(producto) {
     const productoExistente = carrito.find(item => item.Nombre === producto.Nombre);
@@ -117,6 +113,7 @@ function agregarAlCarrito(producto) {
     actualizarIconoCarrito();
 }
 
+
 function actualizarStockVisual(productoId, nuevoStock) {
     const productoElements = document.querySelectorAll(`.producto[data-id="${productoId}"]`);
     
@@ -132,6 +129,7 @@ function actualizarStockVisual(productoId, nuevoStock) {
     });
 }
 
+
 function actualizarIconoCarrito() {
     const iconoCarrito = document.getElementById('contador-carrito');
     if (iconoCarrito) {
@@ -139,6 +137,7 @@ function actualizarIconoCarrito() {
         iconoCarrito.textContent = totalItems;
     }
 }
+
 
 function mostrarCarrito() {
     const modal = document.getElementById('modal-carrito');
@@ -168,33 +167,39 @@ function mostrarCarrito() {
     }
 }
 
+
+function pedirProductoWhatsApp(producto) {
+    const mensaje = `¡Hola! Estoy interesado/a en este producto:%0A%0A` +
+                   `*${producto.Nombre}*%0A` +
+                   `Ref: ${producto.id || 'N/A'}%0A%0A` +
+                   `¿Podrían confirmarme disponibilidad y forma de pago?`;
+    
+    window.open(`https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`, '_blank');
+}
+
+
+
 function enviarPedidoWhatsApp() {
-    let mensaje = '¡Hola! Quiero hacer este pedido:\n\n';
+    let mensaje = '¡Buen día! Quisiera solicitar estos productos:%0A%0A';
     
     carrito.forEach(item => {
-        mensaje += `- ${item.Nombre} x${item.cantidad}\n`;
+        mensaje += `▸ ${item.Nombre} (Cantidad: ${item.cantidad})%0A`;
     });
     
-    // Crear formulario oculto para enviar directamente
-    const form = document.createElement('form');
-    form.action = `https://wa.me/5355591964`;
-    form.method = 'GET';
-    form.target = '_blank';
+    mensaje += '%0APor favor indíquenme:%0A' +
+               '1. Disponibilidad de los items%0A' +
+               '2. Total a pagar%0A' +
+               '3. Opciones de envío';
     
-    const input = document.createElement('input');
-    input.type = 'hidden';
-    input.name = 'text';
-    input.value = mensaje;
+    const urlWhatsApp = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+    window.open(urlWhatsApp, '_blank');
     
-    form.appendChild(input);
-    document.body.appendChild(form);
-    form.submit();
-    document.body.removeChild(form);
-    
+    // Vaciar carrito
     carrito = [];
     actualizarIconoCarrito();
     document.getElementById('modal-carrito').style.display = 'none';
 }
+
 
 function mostrarError(error) {
     const main = document.querySelector('main');

@@ -387,20 +387,33 @@ main {
     
     .botones-carrito {
         flex-direction: column-reverse;
-        gap: 8px; 
+        gap: 8px;
         margin-top: 15px;
     }
     
     .btn-enviar, .btn-cerrar {
-        width: 100%; 
+        width: 100%;
         margin: 0;
-        padding: 10px;
-        font-size: 0.9rem; 
+        padding: 8px 10px; /* Más compacto verticalmente */
+        font-size: 0.85rem; /* Tamaño de fuente reducido */
+        min-height: auto; /* Elimina altura mínima por defecto */
     }
     
     .item-carrito {
-        flex-direction: column;
-        gap: 5px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center; /* Alinea verticalmente */
+        flex-wrap: nowrap; /* Evita saltos de línea */
+        gap: 10px;
+        margin: 8px 0;
+        padding-bottom: 8px;
+        border-bottom: 1px solid #eee;
+    }
+
+    .item-carrito span {
+        white-space: nowrap; /* Evita que el texto se divida en múltiples líneas */
+        overflow: hidden;
+        text-overflow: ellipsis; /* Añade puntos suspensivos si el texto es muy largo */
     }
 }
 

@@ -156,6 +156,8 @@ function mostrarCarrito() {
             </div>
         `).join('');
     
+    totalElement.textContent = `$${carrito.reduce((sum, item) => sum + (item.Precio * item.cantidad), 0)}`;
+    
     // Configurar botón de WhatsApp del modal
     const btnWhatsappModal = document.getElementById('enviar-pedido');
     if (carrito.length > 0) {
@@ -169,10 +171,26 @@ function mostrarCarrito() {
 function enviarPedidoWhatsApp() {
     let mensaje = '¡Hola! Quiero hacer este pedido:\n\n';
     
-    const urlWhatsApp = `https://wa.me/5353796979?text=${encodeURIComponent(mensaje)}`;
-    window.open(urlWhatsApp, '_blank');
+    carrito.forEach(item => {
+        mensaje += `- ${item.Nombre} x${item.cantidad}\n`;
+    });
     
-    // Vaciar carrito después de enviar
+    // Crear formulario oculto para enviar directamente
+    const form = document.createElement('form');
+    form.action = `https://wa.me/5355591964`;
+    form.method = 'GET';
+    form.target = '_blank';
+    
+    const input = document.createElement('input');
+    input.type = 'hidden';
+    input.name = 'text';
+    input.value = mensaje;
+    
+    form.appendChild(input);
+    document.body.appendChild(form);
+    form.submit();
+    document.body.removeChild(form);
+    
     carrito = [];
     actualizarIconoCarrito();
     document.getElementById('modal-carrito').style.display = 'none';

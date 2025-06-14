@@ -305,6 +305,20 @@ main {
     .productos {
         grid-template-columns: 1fr;
     }
+
+    .modal-contenido {
+        width: 95%;
+        padding: 15px;
+    }
+    
+    .botones-carrito {
+        flex-direction: column;
+    }
+    
+    .btn-enviar, .btn-cerrar {
+        width: 100%;
+        margin: 5px 0;
+    }
 }
 
 footer {
@@ -312,4 +326,58 @@ footer {
     padding: 1.5rem;
     background: var(--blanco);
     margin-top: 2rem;
+}
+.btn-cerrar {
+    background: var(--gris-claro);
+    color: var(--texto-oscuro);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+}
+
+.btn-cerrar:hover {
+    background: #d0d0d0;
+}
+
+.btn-enviar {
+    background: var(--dorado);
+    color: var(--blanco);
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    margin-left: 10px; /* Espacio entre botones */
+}
+
+.btn-enviar:hover {
+    background: var(--dorado-oscuro);
+}
+
+/* Alineación de botones en el footer del modal */
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    padding: 1.5rem;
+    border-top: 1px solid var(--gris-claro);
+}
+
+/* Estilo para el botón de cerrar modal (la "X") */
+.cerrar-modal {
+    background: none;
+    border: none;
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--texto-oscuro);
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.cerrar-modal:hover {
+    color: var(--dorado-oscuro);
 }

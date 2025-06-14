@@ -247,13 +247,14 @@ main {
     z-index: 2000;
 }
 
+
 .modal-contenido {
     background: white;
-    padding: 40px 20px 20px;
+    padding: 40px 20px 20px; /* Más espacio arriba para la X */
     border-radius: 8px;
     width: 90%;
     max-width: 500px;
-    position: relative;
+    position: relative; /* Esto es clave */
     max-height: 80vh;
     overflow-y: auto;
 }
@@ -269,6 +270,7 @@ main {
     right: 15px;
     padding: 5px;
     z-index: 1;
+    line-height: 1;
 }
 
 .cerrar-modal:hover {
@@ -366,21 +368,21 @@ main {
         grid-template-columns: 1fr;
     }
 
-    .modal-contenido {
-        width: 90%;
+.modal-contenido {
         padding: 40px 15px 15px;
     }
     
     .cerrar-modal {
         top: 10px;
         right: 10px;
-        background: rgba(255,255,255,0.8);
+        background: rgba(255,255,255,0.9);
         border-radius: 50%;
         width: 30px;
         height: 30px;
         display: flex;
         align-items: center;
         justify-content: center;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
     }
     
     .botones-carrito {

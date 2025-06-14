@@ -1,11 +1,10 @@
 // Carrito global
 let carrito = [];
 
-function renderProductos(productos) {
+function renderProductos(productos) {function renderProductos(productos) {
     const baseUrl = 'https://raw.githubusercontent.com/LuXuzDev/luxury-tresor/main/';
     const baseImagePath = baseUrl + 'images/';
     
-    // Contenedores por categoría
     const contenedores = {
         "Anillos": document.getElementById("lista-productos"),
         "Collares": document.getElementById("collares-container"),
@@ -13,54 +12,56 @@ function renderProductos(productos) {
         "Conjuntos": document.getElementById("conjuntos-container")
     };
 
-    // Limpiar contenedores
     Object.values(contenedores).forEach(container => {
         if (container) container.innerHTML = '';
     });
 
-    // Renderizar cada producto
     productos.forEach(producto => {
         const container = contenedores[producto.Categoria];
         if (!container) return;
 
-        // Manejo de imágenes
         const imagenUrl = producto.Imagen 
             ? `${baseImagePath}${producto.Imagen.replace(/\.(png|jpe?g)$/i, '.JPG')}`
             : `${baseImagePath}placeholder.jpg`;
 
-        // Crear elemento de producto
-        const productoElement = document.createElement('div');
-        productoElement.className = 'producto';
-        productoElement.dataset.id = producto.id || '';
-        productoElement.innerHTML = `
-            <div class="imagen-container">
-                <img src="${imagenUrl}" alt="${producto.Nombre}" 
-                     onerror="this.src='${baseImagePath}placeholder.jpg'">
-            </div>
-            <div class="info-producto">
-                <h3>${producto.Nombre}</h3>
-                <p class="precio">$${producto.Precio.toLocaleString('es-ES')}</p>
-                <p class="stock">${producto.Disponible} disponibles</p>
-                ${producto.Descripcion ? `<p class="descripcion">${producto.Descripcion}</p>` : ''}
-                <div class="botones-producto">
-                    <button class="btn-whatsapp">Pedir por WhatsApp</button>
-                    <button class="btn-carrito" ${producto.Disponible <= 0 ? 'disabled' : ''}>
-                        ${producto.Disponible <= 0 ? 'Agotado' : 'Añadir al carrito'}
-                    </button>
+        const productoHTML = `
+            <div class="producto" data-id="${producto.id || ''}">
+                <div class="imagen-container">
+                    <img src="${imagenUrl}" alt="${producto.Nombre}" 
+                         onerror="this.src='${baseImagePath}placeholder.jpg'">
+                </div>
+                <div class="info-producto">
+                    <h3>${producto.Nombre}</h3>
+                    <p class="precio">$${producto.Precio.toLocaleString('es-ES')}</p>
+                    <p class="stock">${producto.Disponible} disponibles</p>
+                    ${producto.Descripcion ? `<p class="descripcion">${producto.Descripcion}</p>` : ''}
+                    <div class="botones-producto">
+                        <button class="btn-whatsapp" data-id="${producto.id || ''}">
+                            Pedir por WhatsApp
+                        </button>
+                        <button class="btn-carrito" data-id="${producto.id || ''}" 
+                                ${producto.Disponible <= 0 ? 'disabled' : ''}>
+                            ${producto.Disponible <= 0 ? 'Agotado' : 'Agregar al carrito'}
+                        </button>
+                    </div>
                 </div>
             </div>
         `;
 
-        // Agregar event listeners
+        container.insertAdjacentHTML('beforeend', productoHTML);
+
+        // Asignar eventos a los botones recién creados
+        const productoElement = container.lastElementChild;
         productoElement.querySelector('.btn-whatsapp').addEventListener('click', () => {
-            pedirPorWhatsapp(producto);
+            pedirProductoWhatsApp(producto);
         });
-
+        
         productoElement.querySelector('.btn-carrito').addEventListener('click', () => {
-            if (producto.Disponible > 0) agregarAlCarrito(producto);
+            if (producto.Disponible > 0) {
+                agregarAlCarrito(producto);
+                actualizarStockVisual(producto.id, producto.Disponible - 1);
+            }
         });
-
-        container.appendChild(productoElement);
     });
 }
 

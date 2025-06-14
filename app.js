@@ -21,7 +21,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
 function renderProductos(productos) {
     // Configuración de rutas base
-    const baseUrl = 'https://luxuzdev.github.io/luxury-tresor/';
+    const baseUrl = 'https://raw.githubusercontent.com/LuXuzDev/luxury-tresor/main/';
     const baseImagePath = baseUrl + 'images/';
     
     // Contenedores por categoría (actualizados para tu HTML)

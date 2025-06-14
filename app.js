@@ -1,50 +1,37 @@
 function renderProductos(productos) {
-    const baseImagePath = 'https://luxuzdev.github.io/luxury-tresor/images/';
-    const categorias = {
-        "Anillos": "anillos-container",
-        "Collares": "collares-container",
-        "Pulseras": "pulseras-container",
-        "Conjuntos": "conjuntos-container"
+    const contenedores = {
+        "Anillos": document.getElementById("lista-productos"), // Cambiado a lista-productos
+        "Collares": document.getElementById("collares-container"),
+        "Pulseras": document.getElementById("pulseras-container"),
+        "Conjuntos": document.getElementById("conjuntos-container")
     };
 
-    // Limpiar contenedores (con validación)
-    Object.entries(categorias).forEach(([categoria, id]) => {
-        const container = document.getElementById(id);
-        
-        if (!container) {
-            console.error(`¡Contenedor no encontrado! ID: ${id}`);
-            return;
-        }
-
-        // Conservar solo el título <h2>
-        const children = Array.from(container.children);
-        children.forEach(child => {
-            if (!child.classList.contains('titulo-categoria')) {  // Añade esta clase a tus <h2>
-                child.remove();
+    // Limpiar contenedores (versión segura)
+    Object.values(contenedores).forEach(container => {
+        if (container) { // Verificar que el contenedor existe
+            while (container.firstChild) {
+                container.removeChild(container.firstChild);
             }
-        });
+        }
     });
 
     // Agregar productos
     productos.forEach(producto => {
-        const containerId = categorias[producto.Categoria];
-        if (!containerId) {
-            console.warn(`Categoría no definida: ${producto.Categoria}`);
+        const container = contenedores[producto.Categoria];
+        if (!container) {
+            console.warn(`Contenedor no encontrado para categoría: ${producto.Categoria}`);
             return;
         }
 
-        const container = document.getElementById(containerId);
-        if (!container) return;
-
-        const imagenUrl = producto.imagen ? `${baseImagePath}${producto.imagen}` : 'placeholder.jpg';
-        
-        container.innerHTML += `
+        const productoHTML = `
             <div class="producto">
-                <img src="${imagenUrl}" alt="${producto.Nombre}">
+                <img src="images/${producto.imagen || 'placeholder.jpg'}" alt="${producto.Nombre}">
                 <h3>${producto.Nombre}</h3>
                 <p><strong>Precio:</strong> $${producto.Precio}</p>
                 <p><strong>Disponibles:</strong> ${producto.Disponible}</p>
             </div>
         `;
+        
+        container.insertAdjacentHTML('beforeend', productoHTML);
     });
 }

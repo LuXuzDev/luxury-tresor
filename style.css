@@ -1,17 +1,25 @@
+/* Fuentes Glamor */
 @font-face {
     font-family: 'Glamor';
-    src: url('font/Glamor-Regular.woff2') format('woff2'),
-         url('font/Glamor-Regular.woff') format('woff');
+    src: url('./font/Glamor-Regular.woff2') format('woff2'),
+         url('./font/Glamor-Regular.woff') format('woff');
     font-weight: normal;
     font-style: normal;
+    font-display: swap;
 }
 
 @font-face {
     font-family: 'Glamor';
-    src: url('font/Glamor-Bold.woff2') format('woff2'),
-         url('font/Glamor-Bold.woff') format('woff');
+    src: url('./font/Glamor-Bold.woff2') format('woff2'),
+         url('./font/Glamor-Bold.woff') format('woff');
     font-weight: bold;
     font-style: normal;
+    font-display: swap;
+}
+
+/* Aplicar la fuente */
+body {
+    font-family: 'Glamor', sans-serif;
 }
 
 :root {

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <title>LuXury Trésor | Catálogo</title>
+</head>
+
+<body>
+    <header>
+        <h1>Luxury Trésor</h1>
+        <p>Elegancia en cada detalle</p>
+    </header>
+
+    <nav>
+        <div class="menu-container">
+            <div class="logo-mobile">Luxury Trésor</div>
+            <button class="menu-toggle" id="menu-toggle">☰</button>
+            <ul id="menu">
+                <li><a href="#inicio">Inicio</a></li>
+                <li><a href="#anillos">Anillos</a></li>
+                <li><a href="#collares">Collares</a></li>
+                <li><a href="#collares">Pulseras</a></li>
+                <li><a href="#conjuntos">Conjuntos</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <section id="anillos">
+            <h2>Anillos</h2>
+            <div class="productos" id="lista-productos">
+                <!-- Los productos se generarán con JavaScript -->
+            </div>
+        </section>
+
+        <section id="collares">
+            <h2>Collares</h2>
+            
+        </section>
+
+        <section id="pulseras">
+            <h2>Pulseras</h2>
+            
+        </section>
+
+        <section id="conjuntos">
+            <h2>Conjuntos</h2>
+            
+        </section>
+    </main>
+
+    <!-- Botón flotante del carrito -->
+    <div class="carrito-flotante" id="btn-carrito">
+        🛒
+        <span id="contador-carrito">0</span>
+    </div>
+
+    <!-- Modal del carrito -->
+    <div class="modal-carrito" id="modal-carrito">
+        <div class="modal-contenido">
+            <div class="modal-header">
+                <h3>Tu Carrito</h3>
+                <button class="cerrar-modal" id="cerrar-modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Los productos del carrito se mostrarán aquí -->
+            </div>
+            <div class="modal-footer">
+                <div class="total-carrito">Total: <span id="total-carrito">$0</span></div>
+                <button class="btn-enviar" id="enviar-pedido">Enviar Pedido por WhatsApp</button>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Luxury Trésor. Todos los derechos reservados.</p>
+    </footer>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="app.js"></script>
+</body>
+</html>

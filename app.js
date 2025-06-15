@@ -154,7 +154,7 @@ function mostrarCarrito() {
 
 function pedirProductoWhatsApp(producto) {
     const mensaje = [
-        '¡Hola! Estoy me interesa en este producto:',
+        '¡Hola! Me interesa en este producto:',
         '',
         `*${producto.Nombre}*`,
         '',

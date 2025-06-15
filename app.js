@@ -110,8 +110,30 @@ function agregarAlCarrito(producto) {
     
     producto.Disponible--;
     actualizarIconoCarrito();
+    actualizarDisponibleEnVista(producto);
 }
 
+function actualizarDisponibleEnVista(producto) {
+    // Buscar todos los elementos que muestran el disponible de este producto
+    const elementosDisponible = document.querySelectorAll(`[data-nombre-producto="${producto.Nombre}"] .disponible`);
+    
+    // Actualizar cada uno de ellos
+    elementosDisponible.forEach(elemento => {
+        elemento.textContent = producto.Disponible;
+        
+        // Opcional: cambiar estilo si se agotan
+        if (producto.Disponible <= 0) {
+            elemento.style.color = 'red';
+            // También podrías deshabilitar el botón de agregar
+            const botonesAgregar = document.querySelectorAll(`[data-nombre-producto="${producto.Nombre}"] .agregar-carrito`);
+            botonesAgregar.forEach(boton => {
+                boton.disabled = true;
+                boton.textContent = 'Agotado';
+                boton.style.backgroundColor = '#ccc';
+            });
+        }
+    });
+}
 
 
 function actualizarIconoCarrito() {

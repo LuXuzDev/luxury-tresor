@@ -139,7 +139,7 @@ function mostrarCarrito() {
             </div>
         `).join('');
     
-    totalElement.textContent = `$${carrito.reduce((sum, item) => sum + (item.Precio * item.cantidad), 0)}`+USD;
+    totalElement.textContent = `$${carrito.reduce((sum, item) => sum + (item.Precio * item.cantidad), 0)} USD`;
     
     // Configurar botón de WhatsApp del modal
     const btnWhatsappModal = document.getElementById('enviar-pedido');

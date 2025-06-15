@@ -4,17 +4,61 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
     <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
     <meta http-equiv="Pragma" content="no-cache">
     <meta http-equiv="Expires" content="0">
-
     
     <link rel="icon" href="https://raw.githubusercontent.com/LuXuzDev/luxury-tresor/main/images/logo_web.png" type="image/png">
-
+    
+    <style>
+        /* ESTILOS PARA EL HEADER CON IMAGEN DE FONDO */
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+        }
+        
+        header {
+            background: 
+                linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+                url('https://raw.githubusercontent.com/LuXuzDev/luxury-tresor/main/images/background.png') center/cover no-repeat;
+            height: 60vh;
+            min-height: 400px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+            position: relative;
+            padding: 20px;
+        }
+        
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            color: #D4AF37;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+            letter-spacing: 2px;
+        }
+        
+        header p {
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+            max-width: 600px;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+            header p {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+    
     <link rel="stylesheet" href="style.css">
-
-    <title>LuXury Trésor | Catálogo</title>
+    <title>Luxury Trésor | Catálogo</title>
 </head>
 
 <body>

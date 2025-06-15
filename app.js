@@ -56,28 +56,28 @@ function renderProductos(productos) {
             : `${baseImagePath}placeholder.jpg`;
 
         const productoHTML = `
-            <div class="producto" data-id="${producto.id || ''}">
-                <div class="imagen-container">
-                    <img src="${imagenUrl}" alt="${producto.Nombre}" 
-                        onerror="this.src='${baseImagePath}placeholder.jpg'">
-                </div>
-                <div class="info-producto">
-                    <h3>${producto.Nombre}</h3>
-                    <p class="precio">$${producto.Precio.toLocaleString('es-ES')}USD</p>
-                    <p class="stock">${producto.Disponible} disponibles</p>
-                    ${producto.Descripcion ? `<p class="descripcion">${producto.Descripcion}</p>` : ''}
-                    <div class="botones-producto">
-                        <button class="btn-whatsapp" data-id="${producto.id || ''}">
-                            Pedir por WhatsApp
-                        </button>
-                        <button class="btn-carrito" data-id="${producto.id || ''}" 
-                                ${producto.Disponible <= 0 ? 'disabled' : ''}>
-                            ${producto.Disponible <= 0 ? 'Agotado' : 'Agregar al carrito'}
-                        </button>
-                    </div>
-                </div>
+    <div class="producto" data-id="${producto.id || ''}" data-nombre-producto="${producto.Nombre}">
+        <div class="imagen-container">
+            <img src="${imagenUrl}" alt="${producto.Nombre}" 
+                onerror="this.src='${baseImagePath}placeholder.jpg'">
+        </div>
+        <div class="info-producto">
+            <h3>${producto.Nombre}</h3>
+            <p class="precio">$${producto.Precio.toLocaleString('es-ES')}USD</p>
+            <p class="stock">${producto.Disponible} disponibles</p>
+            ${producto.Descripcion ? `<p class="descripcion">${producto.Descripcion}</p>` : ''}
+            <div class="botones-producto">
+                <button class="btn-whatsapp" data-id="${producto.id || ''}">
+                    Pedir por WhatsApp
+                </button>
+                <button class="btn-carrito" data-id="${producto.id || ''}" 
+                        ${producto.Disponible <= 0 ? 'disabled' : ''}>
+                    ${producto.Disponible <= 0 ? 'Agotado' : 'Agregar al carrito'}
+                </button>
             </div>
-        `;
+        </div>
+    </div>
+`;
 
         container.insertAdjacentHTML('beforeend', productoHTML);
 
@@ -97,6 +97,8 @@ function renderProductos(productos) {
 
 
 function agregarAlCarrito(producto) {
+    if (producto.Disponible <= 0) return; // No hacer nada si no hay stock
+    
     const productoExistente = carrito.find(item => item.Nombre === producto.Nombre);
     
     if (productoExistente) {
@@ -113,24 +115,33 @@ function agregarAlCarrito(producto) {
     actualizarDisponibleEnVista(producto);
 }
 
+
 function actualizarDisponibleEnVista(producto) {
     // Buscar todos los elementos que muestran el disponible de este producto
-    const elementosDisponible = document.querySelectorAll(`[data-nombre-producto="${producto.Nombre}"] .disponible`);
+    const elementosStock = document.querySelectorAll(`.producto[data-nombre-producto="${producto.Nombre}"] .stock`);
+    const botonesCarrito = document.querySelectorAll(`.producto[data-nombre-producto="${producto.Nombre}"] .btn-carrito`);
     
-    // Actualizar cada uno de ellos
-    elementosDisponible.forEach(elemento => {
-        elemento.textContent = producto.Disponible;
+    // Actualizar el stock
+    elementosStock.forEach(elemento => {
+        elemento.textContent = `${producto.Disponible} disponibles`;
         
-        // Opcional: cambiar estilo si se agotan
         if (producto.Disponible <= 0) {
             elemento.style.color = 'red';
-            // También podrías deshabilitar el botón de agregar
-            const botonesAgregar = document.querySelectorAll(`[data-nombre-producto="${producto.Nombre}"] .agregar-carrito`);
-            botonesAgregar.forEach(boton => {
-                boton.disabled = true;
-                boton.textContent = 'Agotado';
-                boton.style.backgroundColor = '#ccc';
-            });
+        } else {
+            elemento.style.color = ''; // Restablecer color si vuelve a haber stock
+        }
+    });
+    
+    // Actualizar botones de carrito
+    botonesCarrito.forEach(boton => {
+        if (producto.Disponible <= 0) {
+            boton.disabled = true;
+            boton.textContent = 'Agotado';
+            boton.style.backgroundColor = '#ccc';
+        } else {
+            boton.disabled = false;
+            boton.textContent = 'Agregar al carrito';
+            boton.style.backgroundColor = ''; // Restablecer color
         }
     });
 }
@@ -175,6 +186,8 @@ function mostrarCarrito() {
 
 
 function pedirProductoWhatsApp(producto) {
+    if (producto.Disponible <= 0) return; // No hacer nada si no hay stock
+    
     const mensaje = [
         '¡Hola! Me interesa en este producto:',
         '',

@@ -22,18 +22,42 @@ body {
 
 header {
     background: 
-        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        /* Capa semitransparente para mejor legibilidad */
+        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        /* Imagen de fondo con ajustes */
         url('https://raw.githubusercontent.com/LuXuzDev/luxury-tresor/main/images/background.png') center/cover no-repeat;
+    
+    /* Control del tamaño del contenedor */
+    height: 50vh; /* Ajusta este valor según necesites */
+    min-height: 300px; /* Altura mínima para móviles */
+    max-height: 600px; /* Altura máxima para pantallas grandes */
+    
+    /* Resto de propiedades */
     color: var(--blanco);
     text-align: center;
-    padding: 4rem 2rem;
-    min-height: 400px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
     position: relative;
+    overflow: hidden; /* Oculta cualquier exceso de imagen */
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Para un ajuste más preciso de la imagen */
+header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+        url('https://raw.githubusercontent.com/LuXuzDev/luxury-tresor/main/images/background.png') center/cover no-repeat;
+    z-index: -1;
+    /* Ajusta estos valores para cambiar el zoom de la imagen */
+    background-size: 80%; /* 100% = tamaño normal, >100% = zoom in, <100% = zoom out */
+    transform: scale(1.1); /* Opcional: otro método para ajustar el zoom */
 }
 
 /* Menú responsive */

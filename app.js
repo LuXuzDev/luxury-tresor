@@ -56,21 +56,21 @@ function renderProductos(productos) {
             : `${baseImagePath}placeholder.jpg`;
 
         const productoHTML = `
-    <div class="producto" data-id="${producto.id || ''}" data-nombre-producto="${producto.Nombre}">
+    <div class="producto" data-nombre-producto="${producto.Nombre}">
         <div class="imagen-container">
             <img src="${imagenUrl}" alt="${producto.Nombre}" 
                 onerror="this.src='${baseImagePath}placeholder.jpg'">
         </div>
         <div class="info-producto">
             <h3>${producto.Nombre}</h3>
-            <p class="precio">$${producto.Precio.toLocaleString('es-ES')}USD</p>
+            <p class="precio">$${producto.Precio.toLocaleString('es-ES')} USD</p>
             <p class="stock">${producto.Disponible} disponibles</p>
             ${producto.Descripcion ? `<p class="descripcion">${producto.Descripcion}</p>` : ''}
             <div class="botones-producto">
-                <button class="btn-whatsapp" data-id="${producto.id || ''}">
+                <button class="btn-whatsapp" data-nombre-producto="${producto.Nombre}">
                     Pedir por WhatsApp
                 </button>
-                <button class="btn-carrito" data-id="${producto.id || ''}" 
+                <button class="btn-carrito" data-nombre-producto="${producto.Nombre}" 
                         ${producto.Disponible <= 0 ? 'disabled' : ''}>
                     ${producto.Disponible <= 0 ? 'Agotado' : 'Agregar al carrito'}
                 </button>
@@ -187,7 +187,7 @@ function mostrarCarrito() {
 
 function pedirProductoWhatsApp(producto) {
     if (producto.Disponible <= 0) return; // No hacer nada si no hay stock
-    
+
     const mensaje = [
         '¡Hola! Me interesa en este producto:',
         '',

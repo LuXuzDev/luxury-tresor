@@ -20,6 +20,21 @@ body {
     line-height: 1.6;
 }
 
+header {
+    background: 
+        linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url('https://raw.githubusercontent.com/LuXuzDev/luxury-tresor/main/images/background.png') center/cover no-repeat;
+    color: var(--blanco);
+    text-align: center;
+    padding: 4rem 2rem;
+    min-height: 400px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
 
 /* Menú responsive */
 nav {

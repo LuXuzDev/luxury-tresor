@@ -20,13 +20,6 @@ body {
     line-height: 1.6;
 }
 
-header {
-    background: linear-gradient(135deg, var(--dorado-oscuro) 0%, var(--dorado-claro) 100%);
-    color: var(--blanco);
-    text-align: center;
-    padding: 2rem;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-}
 
 /* Menú responsive */
 nav {

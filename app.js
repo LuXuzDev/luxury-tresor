@@ -59,11 +59,11 @@ function renderProductos(productos) {
             <div class="producto" data-id="${producto.id || ''}">
                 <div class="imagen-container">
                     <img src="${imagenUrl}" alt="${producto.Nombre}" 
-                         onerror="this.src='${baseImagePath}placeholder.jpg'">
+                        onerror="this.src='${baseImagePath}placeholder.jpg'">
                 </div>
                 <div class="info-producto">
                     <h3>${producto.Nombre}</h3>
-                    <p class="precio">$${producto.Precio.toLocaleString('es-ES')}</p>
+                    <p class="precio">$${producto.Precio.toLocaleString('es-ES')}USD</p>
                     <p class="stock">${producto.Disponible} disponibles</p>
                     ${producto.Descripcion ? `<p class="descripcion">${producto.Descripcion}</p>` : ''}
                     <div class="botones-producto">
@@ -135,7 +135,7 @@ function mostrarCarrito() {
         : carrito.map(item => `
             <div class="item-carrito">
                 <span>${item.Nombre} x${item.cantidad}</span>
-                <span>$${item.Precio * item.cantidad}</span>
+                <span>$${item.Precio * item.cantidad} USD</span>
             </div>
         `).join('');
     

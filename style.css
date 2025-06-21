@@ -337,7 +337,7 @@ main {
 }
 
 .vineta {
-    color: var(--dorado-claro); /* Dorado para destacar */
+    color: var(--dorado-oscuro); /* Dorado para destacar */
     margin-right: 5px;
 }
 

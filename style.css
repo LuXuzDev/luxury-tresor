@@ -355,7 +355,7 @@ main {
 }
 
 /* Texto "Ver más" como enlace simple */
-.ver-mas, .ver-menos {
+.leer-mas, .leer-menos {
     color: var(--dorado-oscuro);
     font-weight: 600;
     cursor: pointer;
@@ -369,7 +369,7 @@ main {
     transition: color 0.2s ease;
 }
 
-.ver-mas:hover, .ver-menos:hover {
+.leer-mas:hover, .leer-menos:hover {
     color: var(--dorado);
     text-decoration: underline;
 }
@@ -462,7 +462,7 @@ main {
         max-height: 4.5em;
     }
     
-    .ver-mas, .ver-menos {
+    .leer-mas, .leer-menos {
         font-size: 0.9em;
     }
     

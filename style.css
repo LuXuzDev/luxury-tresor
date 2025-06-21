@@ -337,37 +337,17 @@ main {
 }
 
 /* ---------------------------- */
-/* Sistema de descripción mejorado */
+/* Descripción simplificada (siempre visible) */
 /* ---------------------------- */
 .descripcion-wrapper {
-    position: relative;
     margin-bottom: 10px;
 }
 
 .descripcion {
-    max-height: 3.6em;
-    overflow: hidden;
-    transition: all 0.3s ease;
-    line-height: 1.4em;
     font-size: 14px;
+    line-height: 1.5em;
     margin: 0;
-}
-
-.descripcion-wrapper.expandido .descripcion {
-    max-height: none;
-}
-
-.ver-mas, .ver-menos {
-    color: var(--dorado-oscuro);
-    font-weight: 600;
-    cursor: pointer;
-    text-decoration: underline;
-    transition: color 0.2s ease;
-    margin-left: 4px;
-}
-
-.ver-mas:hover, .ver-menos:hover {
-    color: var(--dorado);
+    color: var(--texto-oscuro);
 }
 
 /* ---------------------------- */
@@ -452,13 +432,8 @@ main {
         text-overflow: ellipsis;
     }
 
-    .descripcion-wrapper {
-        min-height: 70px;
-    }
-    
     .descripcion {
         font-size: 15px;
-        line-height: 1.5em;
     }
 }
 

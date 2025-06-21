@@ -30,7 +30,10 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('Error al cargar el catálogo:', error);
         mostrarError(error);
     }
-});function renderProductos(productos) {
+});
+
+
+function renderProductos(productos) {
     const baseUrl = 'https://raw.githubusercontent.com/LuXuzDev/luxury-tresor/main/';
     const baseImagePath = baseUrl + 'images/';
     
@@ -48,31 +51,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         if (container) container.innerHTML = '';
     });
 
-    // Función para manejar el evento "Ver más/menos"
-    const handleToggleDescripcion = (e) => {
-        e.preventDefault();
-        const wrapper = e.target.closest('.descripcion-wrapper');
-        const descripcionElement = wrapper.querySelector('.descripcion');
-        const isExpanded = wrapper.classList.contains('expandido');
-        
-        if (isExpanded) {
-            // Contraer la descripción
-            const fullText = descripcionElement.dataset.fullText;
-            const shortText = fullText.length > 100 ? fullText.substring(0, 100) + '...' : fullText;
-            
-            descripcionElement.innerHTML = shortText;
-            if (fullText.length > 100) {
-                descripcionElement.innerHTML += '<span class="ver-mas">Ver más</span>';
-            }
-            wrapper.classList.remove('expandido');
-        } else {
-            // Expandir la descripción
-            const fullText = descripcionElement.dataset.fullText;
-            descripcionElement.innerHTML = fullText + '<span class="ver-menos">Ver menos</span>';
-            wrapper.classList.add('expandido');
-        }
-    };
-
     productos.forEach(producto => {
         const container = contenedores[producto.Categoria];
         if (!container) return;
@@ -81,23 +59,12 @@ document.addEventListener('DOMContentLoaded', async () => {
             ? `${baseImagePath}${producto.Imagen}`
             : `${baseImagePath}placeholder.jpg`;
 
-        // Procesar descripción
-        let descripcionHTML = '';
-        if (producto.Descripcion && producto.Descripcion.trim() !== '') {
-            const mostrarVerMas = producto.Descripcion.length > 100;
-            const descripcionCorta = mostrarVerMas 
-                ? producto.Descripcion.substring(0, 100) + '...' 
-                : producto.Descripcion;
-            
-            descripcionHTML = `
-                <div class="descripcion-wrapper">
-                    <p class="descripcion" data-full-text="${producto.Descripcion.replace(/"/g, '&quot;')}">
-                        ${descripcionCorta}
-                        ${mostrarVerMas ? '<span class="ver-mas">Ver más</span>' : ''}
-                    </p>
-                </div>
-            `;
-        }
+        // Descripción siempre visible
+        const descripcionHTML = producto.Descripcion && producto.Descripcion.trim() !== ''
+            ? `<div class="descripcion-wrapper">
+                  <p class="descripcion">${producto.Descripcion}</p>
+               </div>`
+            : '';
 
         const productoHTML = `
             <div class="producto" data-nombre-producto="${producto.Nombre}">
@@ -141,11 +108,6 @@ document.addEventListener('DOMContentLoaded', async () => {
                 if (producto.Disponible > 0) agregarAlCarrito(producto);
             });
         }
-        
-        // Eventos para "Ver más/menos"
-        productoElement.querySelectorAll('.ver-mas, .ver-menos').forEach(btn => {
-            btn.addEventListener('click', handleToggleDescripcion);
-        });
     });
 }
 function agregarAlCarrito(producto) {

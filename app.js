@@ -59,10 +59,15 @@ function renderProductos(productos) {
             ? `${baseImagePath}${producto.Imagen}`
             : `${baseImagePath}placeholder.jpg`;
 
+             // Procesar descripción: convertir saltos de línea a <br>
+        const descripcionProcesada = producto.Descripcion 
+            ? producto.Descripcion.replace(/\n/g, '<br>')
+            : '';
+
         // Descripción siempre visible
         const descripcionHTML = producto.Descripcion && producto.Descripcion.trim() !== ''
             ? `<div class="descripcion-wrapper">
-                  <p class="descripcion">${producto.Descripcion}</p>
+                  <p class="descripcion">${descripcionProcesada}</p>
                </div>`
             : '';
 

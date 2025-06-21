@@ -415,6 +415,35 @@ main {
         overflow: hidden;
         text-overflow: ellipsis; /* Añade puntos suspensivos si el texto es muy largo */
     }
+
+     .descripcion {
+        font-size: 15px;
+        line-height: 1.5em;
+        max-height: 4.5em; /* Más líneas en móvil */
+    }
+    
+    .leer-mas, .leer-menos {
+        font-size: 14px;
+        padding: 5px 10px;
+        margin-top: 8px;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: auto;
+        position: relative;
+        z-index: 2;
+    }
+    
+    /* Asegurar que el botón no se oculte */
+    .info-producto {
+        position: relative;
+        padding-bottom: 15px; /* Espacio extra para el botón */
+    }
+    
+    /* Mejorar visibilidad en productos */
+    .producto {
+        overflow: visible; /* Permite que el botón se vea fuera */
+    }
 }
 
 footer {
@@ -425,12 +454,14 @@ footer {
 }
 
 .descripcion {
-    max-height: 3.6em; /* Aprox 3 líneas de texto */
+    max-height: 3.6em;
     overflow: hidden;
     transition: all 0.3s ease;
-    line-height: 1.2em;
-    margin: 8px 0;
+    line-height: 1.4em;
+    margin: 10px 0;
     position: relative;
+    font-size: 14px;
+    padding-right: 10px; /* Espacio para evitar solapamiento */
 }
 
 .descripcion.expandida {
@@ -439,14 +470,21 @@ footer {
 }
 
 .leer-mas, .leer-menos {
-    color: #007bff;
-    text-decoration: underline;
+    color: var(--dorado-oscuro);
+    text-decoration: none;
     cursor: pointer;
-    font-size: 0.9em;
-    margin-left: 5px;
-    white-space: nowrap;
+    font-size: 13px;
+    margin: 5px 0 0 0;
+    display: inline-block;
+    padding: 3px 8px;
+    background: rgba(255, 255, 255, 0.9);
+    border: 1px solid var(--gris-claro);
+    border-radius: 4px;
+    font-weight: 600;
+    transition: all 0.2s ease;
 }
 
 .leer-mas:hover, .leer-menos:hover {
-    text-decoration: none;
+    background: var(--dorado-claro);
+    color: var(--blanco);
 }

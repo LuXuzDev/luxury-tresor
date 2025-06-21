@@ -337,7 +337,7 @@ main {
 }
 
 /* ---------------------------- */
-/* Sistema de "Leer más/Leer menos" mejorado */
+/* Sistema de descripción */
 /* ---------------------------- */
 .descripcion {
     max-height: 3.6em;
@@ -354,24 +354,16 @@ main {
     overflow: visible;
 }
 
-/* Texto "Ver más" como enlace simple */
-.leer-mas, .leer-menos {
+.ver-mas, .ver-menos {
     color: var(--dorado-oscuro);
     font-weight: 600;
     cursor: pointer;
-    display: inline;
-    font-size: 0.9em;
-    margin-left: 5px;
-    background: none;
-    border: none;
-    padding: 0;
     text-decoration: underline;
     transition: color 0.2s ease;
 }
 
-.leer-mas:hover, .leer-menos:hover {
+.ver-mas:hover, .ver-menos:hover {
     color: var(--dorado);
-    text-decoration: underline;
 }
 
 /* ---------------------------- */
@@ -460,10 +452,6 @@ main {
         font-size: 15px;
         line-height: 1.5em;
         max-height: 4.5em;
-    }
-    
-    .leer-mas, .leer-menos {
-        font-size: 0.9em;
     }
     
     .info-producto {

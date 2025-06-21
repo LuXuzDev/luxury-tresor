@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         mostrarError(error);
     }
 });
-
 function renderProductos(productos) {
     const baseUrl = 'https://raw.githubusercontent.com/LuXuzDev/luxury-tresor/main/';
     const baseImagePath = baseUrl + 'images/';
@@ -50,35 +49,38 @@ function renderProductos(productos) {
         if (container) container.innerHTML = '';
     });
 
-    // Función para manejar el evento "Leer más"
-    const handleLeerMas = (e) => {
+    // Función para manejar el evento "Ver más"
+    const handleVerMas = (e) => {
         e.preventDefault();
         const descripcionElement = e.target.parentElement;
         const descCompleta = decodeURIComponent(e.target.getAttribute('data-desc-completa'));
         descripcionElement.innerHTML = `
             ${descCompleta} 
-            <a href="#" class="leer-menos">Leer menos</a>
+            <span class="ver-menos">Ver menos</span>
         `;
         descripcionElement.classList.add('expandida');
     };
 
-    // Función para manejar el evento "Leer menos"
-    const handleLeerMenos = (e) => {
+    // Función para manejar el evento "Ver menos"
+    const handleVerMenos = (e) => {
         e.preventDefault();
         const descripcionElement = e.target.parentElement;
-        const descCompleta = descripcionElement.textContent.replace('Leer menos', '');
+        const descCompleta = descripcionElement.textContent.replace('Ver menos', '');
         const descCorta = descCompleta.length > 100 
             ? descCompleta.substring(0, 100) + '...' 
             : descCompleta;
         
         descripcionElement.innerHTML = `
             ${descCorta}
-            <a href="#" class="leer-mas" data-desc-completa="${encodeURIComponent(descCompleta)}">Leer más</a>
+            <span class="ver-mas" data-desc-completa="${encodeURIComponent(descCompleta)}">Ver más</span>
         `;
         descripcionElement.classList.remove('expandida');
         
         // Re-asignar el evento
-        descripcionElement.querySelector('.leer-mas').addEventListener('click', handleLeerMas);
+        const verMasBtn = descripcionElement.querySelector('.ver-mas');
+        if (verMasBtn) {
+            verMasBtn.addEventListener('click', handleVerMas);
+        }
     };
 
     productos.forEach(producto => {
@@ -92,16 +94,16 @@ function renderProductos(productos) {
         // Procesar descripción
         let descripcionHTML = '';
         if (producto.Descripcion && producto.Descripcion.trim() !== '') {
-            const mostrarLeerMas = producto.Descripcion.length > 100;
-            const descripcionCorta = mostrarLeerMas 
+            const mostrarVerMas = producto.Descripcion.length > 100;
+            const descripcionCorta = mostrarVerMas 
                 ? producto.Descripcion.substring(0, 100) + '...' 
                 : producto.Descripcion;
             
             descripcionHTML = `
                 <p class="descripcion">
                     ${descripcionCorta}
-                    ${mostrarLeerMas 
-                        ? `<a href="#" class="leer-mas" data-desc-completa="${encodeURIComponent(producto.Descripcion)}">Leer más</a>` 
+                    ${mostrarVerMas 
+                        ? `<span class="ver-mas" data-desc-completa="${encodeURIComponent(producto.Descripcion)}">Ver más</span>` 
                         : ''}
                 </p>
             `;
@@ -150,17 +152,17 @@ function renderProductos(productos) {
             });
         }
         
-        // Evento para "Leer más"
-        const leerMasBtn = productoElement.querySelector('.leer-mas');
-        if (leerMasBtn) {
-            leerMasBtn.addEventListener('click', handleLeerMas);
+        // Evento para "Ver más"
+        const verMasBtn = productoElement.querySelector('.ver-mas');
+        if (verMasBtn) {
+            verMasBtn.addEventListener('click', handleVerMas);
         }
     });
 
-    // Delegación de eventos para "Leer menos" (mejor rendimiento)
+    // Delegación de eventos para "Ver menos" (mejor rendimiento)
     document.addEventListener('click', (e) => {
-        if (e.target.classList.contains('leer-menos')) {
-            handleLeerMenos(e);
+        if (e.target.classList.contains('ver-menos')) {
+            handleVerMenos(e);
         }
     });
 }

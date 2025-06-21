@@ -39,9 +39,9 @@ function renderProductos(productos) {
     const contenedores = {
         "Anillos": document.getElementById("lista-productos"),
         "Collares": document.getElementById("collares-container"),
+        "Pulseras": document.getElementById("pulseras-container"),
         "Pendientes": document.getElementById("pendientes-container"),
         "Relojes": document.getElementById("relojes-container"),
-        "Pulseras": document.getElementById("pulseras-container"),
         "Conjuntos": document.getElementById("conjuntos-container")
     };
 

@@ -32,7 +32,6 @@ document.addEventListener('DOMContentLoaded', async () => {
     }
 });
 
-
 function renderProductos(productos) {
     const baseUrl = 'https://raw.githubusercontent.com/LuXuzDev/luxury-tresor/main/';
     const baseImagePath = baseUrl + 'images/';
@@ -59,17 +58,27 @@ function renderProductos(productos) {
             ? `${baseImagePath}${producto.Imagen}`
             : `${baseImagePath}placeholder.jpg`;
 
-             // Procesar descripción: convertir saltos de línea a <br>
-        const descripcionProcesada = producto.Descripcion 
-            ? producto.Descripcion.replace(/\n/g, '<br>')
-            : '';
-
-        // Descripción siempre visible
-        const descripcionHTML = producto.Descripcion && producto.Descripcion.trim() !== ''
-            ? `<div class="descripcion-wrapper">
-                  <p class="descripcion">${descripcionProcesada}</p>
-               </div>`
-            : '';
+        // Procesar descripción manteniendo saltos de línea y formato
+        let descripcionHTML = '';
+        if (producto.Descripcion && producto.Descripcion.trim() !== '') {
+            // Primero convertimos a HTML seguro
+            let descripcionSegura = producto.Descripcion
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;");
+            
+            // Luego manejamos los saltos de línea y formato
+            descripcionSegura = descripcionSegura
+                .replace(/\n/g, '<br>')
+                .replace(/▸/g, '&▸;')  // Mantener viñetas
+                .replace(/•/g, '&•;'); // Mantener puntos
+            
+            descripcionHTML = `
+                <div class="descripcion-wrapper">
+                    <p class="descripcion" style="white-space: pre-line;">${descripcionSegura}</p>
+                </div>
+            `;
+        }
 
         const productoHTML = `
             <div class="producto" data-nombre-producto="${producto.Nombre}">
@@ -115,6 +124,8 @@ function renderProductos(productos) {
         }
     });
 }
+
+
 function agregarAlCarrito(producto) {
     if (producto.Disponible <= 0) return; // No hacer nada si no hay stock
     

@@ -348,7 +348,6 @@ main {
     line-height: 1.5em;
     margin: 0;
     color: var(--texto-oscuro);
-    white-space: pre-line;
 }
 
 /* ---------------------------- */

@@ -100,7 +100,7 @@ function renderProductos(productos) {
                 : producto.Descripcion;
             
             descripcionHTML = `
-            <div class="descripcion-container">
+            <div class="descripcion-wrapper">
             <p class="descripcion">
                 ${descripcionCorta}
                 ${mostrarVerMas ? `<span class="ver-mas">Ver más</span>` : ''}

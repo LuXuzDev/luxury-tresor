@@ -337,11 +337,10 @@ main {
 }
 
 /* ---------------------------- */
-/* Sistema de descripción */
+/* Sistema de descripción mejorado */
 /* ---------------------------- */
-
 .descripcion-wrapper {
-    min-height: 80px;  /* Altura mínima garantizada */
+    min-height: 80px;
     position: relative;
     margin-bottom: 15px;
 }
@@ -351,15 +350,14 @@ main {
     overflow: hidden;
     transition: all 0.3s ease;
     line-height: 1.4em;
-    margin: 10px 0 25px 0; /* Aumenté el margen inferior a 25px */
-    position: relative;
     font-size: 14px;
+    margin: 0;
+    padding-bottom: 25px;
 }
 
-.descripcion.expandida {
+.descripcion-wrapper.expandido .descripcion {
     max-height: none;
-    overflow: visible;
-    margin-bottom: 25px; /* Mantener el mismo margen cuando está expandido */
+    padding-bottom: 0;
 }
 
 .ver-mas, .ver-menos {
@@ -368,15 +366,16 @@ main {
     cursor: pointer;
     text-decoration: underline;
     transition: color 0.2s ease;
-    margin-top: 10px; /* Añadí margen superior para separar del texto */
-    display: inline-block; /* Para que el margen funcione correctamente */
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: var(--blanco);
+    padding-right: 5px;
 }
 
 .ver-mas:hover, .ver-menos:hover {
     color: var(--dorado);
 }
-
-
 
 /* ---------------------------- */
 /* Responsive Design */
@@ -465,16 +464,8 @@ main {
     }
     
     .descripcion {
-        margin-bottom: 30px; /* Más espacio en escritorio */
-        min-height: 4.2em; /* Altura mínima para evitar cortes */
-    }
-    
-    .info-producto {
-        padding-bottom: 15px; /* Más espacio antes de los botones */
-    }
-    
-    .producto {
-        overflow: visible;
+        font-size: 15px;
+        line-height: 1.5em;
     }
 }
 
@@ -482,7 +473,6 @@ main {
 @media (max-width: 480px) {
     .descripcion {
         font-size: 14px;
-        max-height: 4.2em;
     }
 }
 

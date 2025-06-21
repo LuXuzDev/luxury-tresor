@@ -52,19 +52,25 @@ function renderProductos(productos) {
     // Función para manejar el evento "Ver más"
     const handleVerMas = (e) => {
         e.preventDefault();
-        const descripcionElement = e.target.parentElement;
+        const wrapper = e.target.closest('.descripcion-wrapper');
+        const descripcionElement = wrapper.querySelector('.descripcion');
         const descCompleta = decodeURIComponent(e.target.getAttribute('data-desc-completa'));
+        
         descripcionElement.innerHTML = `
             ${descCompleta} 
             <span class="ver-menos">Ver menos</span>
         `;
-        descripcionElement.classList.add('expandida');
+        wrapper.classList.add('expandido');
+        
+        // Asignar evento al nuevo "Ver menos"
+        wrapper.querySelector('.ver-menos').addEventListener('click', handleVerMenos);
     };
 
     // Función para manejar el evento "Ver menos"
     const handleVerMenos = (e) => {
         e.preventDefault();
-        const descripcionElement = e.target.parentElement;
+        const wrapper = e.target.closest('.descripcion-wrapper');
+        const descripcionElement = wrapper.querySelector('.descripcion');
         const descCompleta = descripcionElement.textContent.replace('Ver menos', '');
         const descCorta = descCompleta.length > 100 
             ? descCompleta.substring(0, 100) + '...' 
@@ -74,13 +80,10 @@ function renderProductos(productos) {
             ${descCorta}
             <span class="ver-mas" data-desc-completa="${encodeURIComponent(descCompleta)}">Ver más</span>
         `;
-        descripcionElement.classList.remove('expandida');
+        wrapper.classList.remove('expandido');
         
         // Re-asignar el evento
-        const verMasBtn = descripcionElement.querySelector('.ver-mas');
-        if (verMasBtn) {
-            verMasBtn.addEventListener('click', handleVerMas);
-        }
+        descripcionElement.querySelector('.ver-mas').addEventListener('click', handleVerMas);
     };
 
     productos.forEach(producto => {
@@ -100,12 +103,14 @@ function renderProductos(productos) {
                 : producto.Descripcion;
             
             descripcionHTML = `
-            <div class="descripcion-wrapper">
-            <p class="descripcion">
-                ${descripcionCorta}
-                ${mostrarVerMas ? `<span class="ver-mas">Ver más</span>` : ''}
-            </p>
-            </div>
+                <div class="descripcion-wrapper">
+                    <p class="descripcion">
+                        ${descripcionCorta}
+                        ${mostrarVerMas 
+                            ? `<span class="ver-mas" data-desc-completa="${encodeURIComponent(producto.Descripcion)}">Ver más</span>` 
+                            : ''}
+                    </p>
+                </div>
             `;
         }
 
@@ -156,13 +161,6 @@ function renderProductos(productos) {
         const verMasBtn = productoElement.querySelector('.ver-mas');
         if (verMasBtn) {
             verMasBtn.addEventListener('click', handleVerMas);
-        }
-    });
-
-    // Delegación de eventos para "Ver menos" (mejor rendimiento)
-    document.addEventListener('click', (e) => {
-        if (e.target.classList.contains('ver-menos')) {
-            handleVerMenos(e);
         }
     });
 }

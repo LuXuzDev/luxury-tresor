@@ -30,8 +30,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         console.error('Error al cargar el catálogo:', error);
         mostrarError(error);
     }
-});
-function renderProductos(productos) {
+});function renderProductos(productos) {
     const baseUrl = 'https://raw.githubusercontent.com/LuXuzDev/luxury-tresor/main/';
     const baseImagePath = baseUrl + 'images/';
     
@@ -49,41 +48,29 @@ function renderProductos(productos) {
         if (container) container.innerHTML = '';
     });
 
-    // Función para manejar el evento "Ver más"
-    const handleVerMas = (e) => {
+    // Función para manejar el evento "Ver más/menos"
+    const handleToggleDescripcion = (e) => {
         e.preventDefault();
         const wrapper = e.target.closest('.descripcion-wrapper');
         const descripcionElement = wrapper.querySelector('.descripcion');
-        const descCompleta = decodeURIComponent(e.target.getAttribute('data-desc-completa'));
+        const isExpanded = wrapper.classList.contains('expandido');
         
-        descripcionElement.innerHTML = `
-            ${descCompleta} 
-            <span class="ver-menos">Ver menos</span>
-        `;
-        wrapper.classList.add('expandido');
-        
-        // Asignar evento al nuevo "Ver menos"
-        wrapper.querySelector('.ver-menos').addEventListener('click', handleVerMenos);
-    };
-
-    // Función para manejar el evento "Ver menos"
-    const handleVerMenos = (e) => {
-        e.preventDefault();
-        const wrapper = e.target.closest('.descripcion-wrapper');
-        const descripcionElement = wrapper.querySelector('.descripcion');
-        const descCompleta = descripcionElement.textContent.replace('Ver menos', '');
-        const descCorta = descCompleta.length > 100 
-            ? descCompleta.substring(0, 100) + '...' 
-            : descCompleta;
-        
-        descripcionElement.innerHTML = `
-            ${descCorta}
-            <span class="ver-mas" data-desc-completa="${encodeURIComponent(descCompleta)}">Ver más</span>
-        `;
-        wrapper.classList.remove('expandido');
-        
-        // Re-asignar el evento
-        descripcionElement.querySelector('.ver-mas').addEventListener('click', handleVerMas);
+        if (isExpanded) {
+            // Contraer la descripción
+            const fullText = descripcionElement.dataset.fullText;
+            const shortText = fullText.length > 100 ? fullText.substring(0, 100) + '...' : fullText;
+            
+            descripcionElement.innerHTML = shortText;
+            if (fullText.length > 100) {
+                descripcionElement.innerHTML += '<span class="ver-mas">Ver más</span>';
+            }
+            wrapper.classList.remove('expandido');
+        } else {
+            // Expandir la descripción
+            const fullText = descripcionElement.dataset.fullText;
+            descripcionElement.innerHTML = fullText + '<span class="ver-menos">Ver menos</span>';
+            wrapper.classList.add('expandido');
+        }
     };
 
     productos.forEach(producto => {
@@ -104,11 +91,9 @@ function renderProductos(productos) {
             
             descripcionHTML = `
                 <div class="descripcion-wrapper">
-                    <p class="descripcion">
+                    <p class="descripcion" data-full-text="${producto.Descripcion.replace(/"/g, '&quot;')}">
                         ${descripcionCorta}
-                        ${mostrarVerMas 
-                            ? `<span class="ver-mas" data-desc-completa="${encodeURIComponent(producto.Descripcion)}">Ver más</span>` 
-                            : ''}
+                        ${mostrarVerMas ? '<span class="ver-mas">Ver más</span>' : ''}
                     </p>
                 </div>
             `;
@@ -157,14 +142,12 @@ function renderProductos(productos) {
             });
         }
         
-        // Evento para "Ver más"
-        const verMasBtn = productoElement.querySelector('.ver-mas');
-        if (verMasBtn) {
-            verMasBtn.addEventListener('click', handleVerMas);
-        }
+        // Eventos para "Ver más/menos"
+        productoElement.querySelectorAll('.ver-mas, .ver-menos').forEach(btn => {
+            btn.addEventListener('click', handleToggleDescripcion);
+        });
     });
 }
-
 function agregarAlCarrito(producto) {
     if (producto.Disponible <= 0) return; // No hacer nada si no hay stock
     

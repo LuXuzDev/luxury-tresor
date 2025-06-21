@@ -2,29 +2,41 @@
 <html lang="es">
 
 <head>
-    <!-- Ejemplo de meta tags optimizados -->
-<title>Luxury Trésor | Joyería Fina y Relojería de Lujo | Colecciones Exclusivas</title>
-<meta name="description" content="Descubra piezas exclusivas de joyería fina y relojería de lujo en Luxury Trésor. Artesanía premium, materiales nobles y diseños únicos.">
+    <meta charset="UTF-8">
+    <title>Luxury Trésor | Catálogo</title>
+    <meta name="description"
+        content="Descubra piezas exclusivas de joyería fina y relojería de lujo en Luxury Trésor. Materiales nobles y diseños únicos.">
 
-<!-- Open Graph optimizado -->
-<meta property="og:title" content="Luxury Trésor | Joyería y Relojería de Alta Gama">
-<meta property="og:description" content="Descubre piezas únicas donde el lujo se encuentra con el diseño. Relojes y accesorios cuidadosamente seleccionados para los más exigentes.">
-<meta property="og:image" content="https://raw.githubusercontent.com/LuXuzDev/luxury-tresor/main/images/logo.jpg">
-<meta property="og:url" content="https://luxuzdev.github.io/luxury-tresor/">
-<meta property="og:type" content="website">
-
-
-<!-- Cache más equilibrado (ajustar según necesidades reales) -->
-<meta http-equiv="Cache-Control" content="public, max-age=3600, must-revalidate">
+    <!-- Open Graph optimizado -->
+    <meta property="og:title" content="Luxury Trésor | Joyería y Relojería de Alta Gama">
+    <meta property="og:description"
+        content="Piezas cuidadosamente seleccionadas para los más exigentes. Descubre diseños únicos donde el lujo se encuentra con la artesanía contemporánea.">
+    <meta property="og:image" content="https://raw.githubusercontent.com/LuXuzDev/luxury-tresor/main/images/logo.jpg">
+    <meta property="og:url" content="https://luxuzdev.github.io/luxury-tresor/">
+    <meta property="og:type" content="website">
 
 
+    <!-- Cache más equilibrado (ajustar según necesidades reales) -->
+    <meta http-equiv="Cache-Control" content="public, max-age=3600, must-revalidate">
 
-    <link rel="icon" href="https://raw.githubusercontent.com/LuXuzDev/luxury-tresor/main/images/logo_web.png" type="image/png">
+
+
+    <link rel="icon" href="https://raw.githubusercontent.com/LuXuzDev/luxury-tresor/main/images/logo_web.png"
+        type="image/png">
 
 
     <link rel="stylesheet" href="style.css">
+    <script type="application/ld+json">
+    {
+    "@context": "https://schema.org",
+    "@type": "JewelryStore",  <!-- Indica que tu sitio es una joyería -->
+    "name": "Luxury Trésor",  <!-- Nombre de tu marca -->
+    "image": "https://raw.githubusercontent.com/LuXuzDev/luxury-tresor/main/images/logo.jpg",
+    "description": "Joyería fina y relojería de lujo",  <!-- Descripción general -->
+    "telephone": "+5353796979",
+    }
+</script>
 
-    <title>LuXury Trésor | Catálogo</title>
 </head>
 
 <body>
@@ -49,71 +61,72 @@
         </div>
     </nav>
 
-    <main><section id="anillos" class="categoria">
-        <h2>Anillos</h2>
-        <div class="productos" id="lista-productos"></div>
-    </section>
-    
-    <!-- Sección Collares-->
-    <section id="collares" class="categoria">
-        <h2>Collares</h2>
-        <div class="productos" id="collares-container"></div>
-    </section>
-    
-    <!-- Sección Pulseras-->
-    <section id="pulseras" class="categoria">
-        <h2>Pulseras</h2>
-        <div class="productos" id="pulseras-container"></div>
-    </section>
-    
-    <!-- Sección Pendientes-->
-    <section id="pendientes" class="categoria">
-        <h2>Pendientes</h2>
-        <div class="productos" id="pendientes-container"></div>
-    </section>
+    <main>
+        <section id="anillos" class="categoria">
+            <h2>Anillos</h2>
+            <div class="productos" id="lista-productos"></div>
+        </section>
 
-    <!-- Sección Relojes-->
-    <section id="relojes" class="categoria">
-        <h2>Relojes</h2>
-        <div class="productos" id="relojes-container"></div>
-    </section>
+        <!-- Sección Collares-->
+        <section id="collares" class="categoria">
+            <h2>Collares</h2>
+            <div class="productos" id="collares-container"></div>
+        </section>
 
-    <!-- Sección Conjuntos-->
-    <section id="conjuntos" class="categoria">
-        <h2>Conjuntos</h2>
-        <div class="productos" id="conjuntos-container"></div>
-    </section>
+        <!-- Sección Pulseras-->
+        <section id="pulseras" class="categoria">
+            <h2>Pulseras</h2>
+            <div class="productos" id="pulseras-container"></div>
+        </section>
+
+        <!-- Sección Pendientes-->
+        <section id="pendientes" class="categoria">
+            <h2>Pendientes</h2>
+            <div class="productos" id="pendientes-container"></div>
+        </section>
+
+        <!-- Sección Relojes-->
+        <section id="relojes" class="categoria">
+            <h2>Relojes</h2>
+            <div class="productos" id="relojes-container"></div>
+        </section>
+
+        <!-- Sección Conjuntos-->
+        <section id="conjuntos" class="categoria">
+            <h2>Conjuntos</h2>
+            <div class="productos" id="conjuntos-container"></div>
+        </section>
     </main>
 
     <!-- Botón flotante del carrito -->
     <div class=" carrito-flotante" id="btn-carrito">
-                            🛒
-                            <span id="contador-carrito">0</span>
-                        </div>
+        🛒
+        <span id="contador-carrito">0</span>
+    </div>
 
-                        <!-- Modal del carrito -->
-                        <div class="modal-carrito" id="modal-carrito">
-                            <div class="modal-contenido">
-                                <div class="modal-header">
-                                    <h3>Tu Carrito</h3>
-                                    <button class="cerrar-modal" id="cerrar-modal">&times;</button>
-                                </div>
-                                <div class="modal-body" id="modal-body">
-                                    <!-- Los productos del carrito se mostrarán aquí -->
-                                </div>
-                                <div class="modal-footer">
-                                    <div class="total-carrito">Total: <span id="total-carrito">$0</span></div>
-                                    <button class="btn-enviar" id="enviar-pedido">Enviar Pedido por WhatsApp</button>
-                                </div>
-                            </div>
-                        </div>
+    <!-- Modal del carrito -->
+    <div class="modal-carrito" id="modal-carrito">
+        <div class="modal-contenido">
+            <div class="modal-header">
+                <h3>Tu Carrito</h3>
+                <button class="cerrar-modal" id="cerrar-modal">&times;</button>
+            </div>
+            <div class="modal-body" id="modal-body">
+                <!-- Los productos del carrito se mostrarán aquí -->
+            </div>
+            <div class="modal-footer">
+                <div class="total-carrito">Total: <span id="total-carrito">$0</span></div>
+                <button class="btn-enviar" id="enviar-pedido">Enviar Pedido por WhatsApp</button>
+            </div>
+        </div>
+    </div>
 
-                        <footer>
-                            <p>&copy; 2024 Luxury Trésor. Todos los derechos reservados.</p>
-                        </footer>
+    <footer>
+        <p>&copy; 2024 Luxury Trésor. Todos los derechos reservados.</p>
+    </footer>
 
-                        <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
-                        <script src="app.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+    <script src="app.js"></script>
 </body>
 
-</html>   
+</html>

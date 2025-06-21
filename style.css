@@ -369,6 +369,49 @@ main {
     color: var(--dorado);
 }
 
+
+/* nuevo*/
+.descripcion-container {
+    min-height: 80px; /* Altura mínima garantizada */
+    margin-bottom: 25px;
+    position: relative;
+}
+
+/* Texto de descripción */
+.descripcion {
+    max-height: 3.6em;
+    overflow: hidden;
+    transition: all 0.3s ease;
+    line-height: 1.4em;
+    font-size: 14px;
+    margin-bottom: 8px;
+}
+
+/* Versión expandida */
+.descripcion.expandida {
+    max-height: none;
+}
+
+/* Enlace "Ver más/menos" */
+.ver-mas, .ver-menos {
+    color: var(--dorado-oscuro);
+    font-weight: 600;
+    cursor: pointer;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+.ver-mas:hover, .ver-menos:hover {
+    color: var(--dorado);
+}
+
+/* Contenedor de botones */
+.botones-producto {
+    margin-top: 35px; /* Más espacio arriba de los botones */
+}
 /* ---------------------------- */
 /* Responsive Design */
 /* ---------------------------- */

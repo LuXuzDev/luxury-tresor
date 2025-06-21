@@ -100,12 +100,12 @@ function renderProductos(productos) {
                 : producto.Descripcion;
             
             descripcionHTML = `
-                <p class="descripcion">
-                    ${descripcionCorta}
-                    ${mostrarVerMas 
-                        ? `<span class="ver-mas" data-desc-completa="${encodeURIComponent(producto.Descripcion)}">Ver más</span>` 
-                        : ''}
-                </p>
+            <div class="descripcion-container">
+            <p class="descripcion">
+                ${descripcionCorta}
+                ${mostrarVerMas ? `<span class="ver-mas">Ver más</span>` : ''}
+            </p>
+            </div>
             `;
         }
 

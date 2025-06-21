@@ -20,15 +20,15 @@
     "Categoria": "Pendientes"
   },
   {
-    "Nombre": "Solitario Clasico",
-    "Precio": 30,
-    "Descripcion": "Presentamos el exclusivo Set Corazón de Obsidiana Noir: joyería en plata negra con zirconias centelleantes, diseñado para mujeres que aman el lujo discreto. Ideal como regalo de San Valentín, aniversario o cumpleaños",
-    "Cantidad": 6,
-    "Cantidad Vendida": 3,
-    "Disponible": 3,
-    "Imagen": "a.png",
-    "Categoria": "Pulseras"
-  },
+  "Nombre": "Solitario Clásico",
+  "Precio": 30,
+  "Descripcion": "Diseño limpio y atemporal, creado para destacar con elegancia discreta. Piezas esenciales que trascienden tendencias.\n\nMaterial:\n▸ Plata 925 bañada en oro 18k.\n▸ Acero quirúrgico hipoalergénico.\n▸ Gemas naturales (opcional: ej. cuarzo, diamante o zafiro).\n\nVersatilidad:\n• Ideal para capas con otras joyas o usarse sola.\n• Transición perfecta de día a noche.\n• Compatible con cualquier estilo: desde outfits minimalistas hasta looks estructurados.",
+  "Cantidad": 6,
+  "Cantidad_Vendida": 3,
+  "Disponible": 3,
+  "Imagen": "a.png",
+  "Categoria": "Pulseras"
+},
   {
     "Nombre": "Ocean",
     "Precio": 40,

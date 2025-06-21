@@ -65,7 +65,9 @@ function renderProductos(productos) {
             let descripcionSegura = producto.Descripcion
                 .replace(/&/g, "&amp;")
                 .replace(/</g, "&lt;")
-                .replace(/>/g, "&gt;");
+                .replace(/>/g, "&gt;")
+                .replace(/>/g, "&gt;")
+                ;
             
             // Luego manejamos los saltos de línea y formato
             descripcionSegura = descripcionSegura

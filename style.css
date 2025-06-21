@@ -423,3 +423,23 @@ footer {
     background: var(--blanco);
     margin-top: 2rem;
 }
+
+.descripcion {
+    max-height: 3.6em; /* Aprox 3 líneas de texto */
+    overflow: hidden;
+    transition: max-height 0.3s ease;
+    line-height: 1.2em;
+}
+
+.leer-mas, .leer-menos {
+    color: var(--dorado-claro);
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-left: 5px;
+    display: inline-block;
+}
+
+.descripcion.expandida {
+    max-height: none;
+}

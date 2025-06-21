@@ -31,7 +31,6 @@ document.addEventListener('DOMContentLoaded', async () => {
         mostrarError(error);
     }
 });
-
 function renderProductos(productos) {
     const baseUrl = 'https://raw.githubusercontent.com/LuXuzDev/luxury-tresor/main/';
     const baseImagePath = baseUrl + 'images/';
@@ -55,47 +54,79 @@ function renderProductos(productos) {
             ? `${baseImagePath}${producto.Imagen}`
             : `${baseImagePath}placeholder.jpg`;
 
+        // Procesar descripción (limitar a 100 caracteres y agregar "Leer más")
+        let descripcionHTML = '';
+        if (producto.Descripcion) {
+            const descripcionCorta = producto.Descripcion.length > 100 
+                ? producto.Descripcion.substring(0, 100) + '...' 
+                : producto.Descripcion;
+                
+            descripcionHTML = `
+                <p class="descripcion">
+                    ${descripcionCorta}
+                    ${producto.Descripcion.length > 100 ? '<a href="#" class="leer-mas" data-desc-completa="' + encodeURIComponent(producto.Descripcion) + '">Leer más</a>' : ''}
+                </p>
+            `;
+        }
+
         const productoHTML = `
-    <div class="producto" data-nombre-producto="${producto.Nombre}">
-        <div class="imagen-container">
-            <img src="${imagenUrl}" alt="${producto.Nombre}" 
-                onerror="this.src='${baseImagePath}placeholder.jpg'">
-        </div>
-        <div class="info-producto">
-            <h3>${producto.Nombre}</h3>
-            <p class="precio">$${producto.Precio.toLocaleString('es-ES')} USD</p>
-            <p class="stock">${producto.Disponible} disponibles</p>
-            ${producto.Descripcion ? `<p class="descripcion">${producto.Descripcion}</p>` : ''}
-            <div class="botones-producto">
-                <button class="btn-whatsapp" data-nombre-producto="${producto.Nombre}">
-                    Pedir por WhatsApp
-                </button>
-                <button class="btn-carrito" data-nombre-producto="${producto.Nombre}" 
-                        ${producto.Disponible <= 0 ? 'disabled' : ''}>
-                    ${producto.Disponible <= 0 ? 'Agotado' : 'Agregar al carrito'}
-                </button>
+            <div class="producto" data-nombre-producto="${producto.Nombre}">
+                <div class="imagen-container">
+                    <img src="${imagenUrl}" alt="${producto.Nombre}" 
+                        onerror="this.src='${baseImagePath}placeholder.jpg'">
+                </div>
+                <div class="info-producto">
+                    <h3>${producto.Nombre}</h3>
+                    <p class="precio">$${producto.Precio.toLocaleString('es-ES')} USD</p>
+                    <p class="stock">${producto.Disponible} disponibles</p>
+                    ${descripcionHTML}
+                    <div class="botones-producto">
+                        <button class="btn-whatsapp" data-nombre-producto="${producto.Nombre}">
+                            Pedir por WhatsApp
+                        </button>
+                        <button class="btn-carrito" data-nombre-producto="${producto.Nombre}" 
+                                ${producto.Disponible <= 0 ? 'disabled' : ''}>
+                            ${producto.Disponible <= 0 ? 'Agotado' : 'Agregar al carrito'}
+                        </button>
+                    </div>
+                </div>
             </div>
-        </div>
-    </div>
-`;
+        `;
 
         container.insertAdjacentHTML('beforeend', productoHTML);
 
         // Asignar eventos a los botones recién creados
         const productoElement = container.lastElementChild;
-        productoElement.querySelector('.btn-whatsapp').addEventListener('click', () => {
+        productoElement.querySelector('.btn-whatsapp')?.addEventListener('click', () => {
             pedirProductoWhatsApp(producto);
         });
         
-        productoElement.querySelector('.btn-carrito').addEventListener('click', () => {
+        productoElement.querySelector('.btn-carrito')?.addEventListener('click', () => {
             if (producto.Disponible > 0) {
                 agregarAlCarrito(producto);
             }
         });
     });
+
+    // Agregar event listeners para los "Leer más"
+    document.querySelectorAll('.leer-mas').forEach(boton => {
+        boton.addEventListener('click', function(e) {
+            e.preventDefault();
+            const descCompleta = decodeURIComponent(this.getAttribute('data-desc-completa'));
+            this.parentElement.innerHTML = descCompleta + ' <a href="#" class="leer-menos">Leer menos</a>';
+        });
+    });
+
+    // Agregar event listeners para los "Leer menos"
+    document.addEventListener('click', function(e) {
+        if (e.target.classList.contains('leer-menos')) {
+            e.preventDefault();
+            const descripcionCompleta = e.target.parentElement.textContent.replace('Leer menos', '');
+            const descCorta = descripcionCompleta.substring(0, 100) + '...';
+            e.target.parentElement.innerHTML = descCorta + ' <a href="#" class="leer-mas" data-desc-completa="' + encodeURIComponent(descripcionCompleta) + '">Leer más</a>';
+        }
+    });
 }
-
-
 function agregarAlCarrito(producto) {
     if (producto.Disponible <= 0) return; // No hacer nada si no hay stock
     

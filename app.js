@@ -69,9 +69,7 @@ function renderProductos(productos) {
             
             // Luego manejamos los saltos de línea y formato
             descripcionSegura = descripcionSegura
-                .replace(/\n/g, '<br>')
-                .replace(/▸/g, '&▸;')  // Mantener viñetas
-                .replace(/•/g, '&•;'); // Mantener puntos
+                .replace(/\n/g, '<br>');
             
             descripcionHTML = `
                 <div class="descripcion-wrapper">

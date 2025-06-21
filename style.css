@@ -452,13 +452,12 @@ main {
     }
 
     .descripcion {
-        font-size: 15px;
-        line-height: 1.5em;
-        max-height: 4.5em;
+        margin-bottom: 30px; /* Más espacio en escritorio */
+        min-height: 4.2em; /* Altura mínima para evitar cortes */
     }
     
     .info-producto {
-        padding-bottom: 20px;
+        padding-bottom: 15px; /* Más espacio antes de los botones */
     }
     
     .producto {

@@ -141,6 +141,7 @@ main {
 
 .info-producto {
     padding: 1.5rem;
+    position: relative;
 }
 
 .producto h3 {
@@ -247,14 +248,13 @@ main {
     z-index: 2000;
 }
 
-
 .modal-contenido {
     background: white;
-    padding: 40px 20px 20px; /* Más espacio arriba para la X */
+    padding: 40px 20px 20px;
     border-radius: 8px;
     width: 90%;
     max-width: 500px;
-    position: relative; /* Esto es clave */
+    position: relative;
     max-height: 80vh;
     overflow-y: auto;
 }
@@ -336,16 +336,18 @@ main {
     border-top: 1px solid var(--gris-claro);
 }
 
-
+/* ---------------------------- */
+/* Sistema de "Leer más/Leer menos" mejorado */
+/* ---------------------------- */
 .descripcion {
     max-height: 3.6em;
     overflow: hidden;
     transition: all 0.3s ease;
     line-height: 1.4em;
-    margin: 10px 0;
+    margin: 10px 0 15px 0;
     position: relative;
     font-size: 14px;
-    padding-right: 10px; /* Espacio para evitar solapamiento */
+    padding-right: 10px;
 }
 
 .descripcion.expandida {
@@ -353,27 +355,37 @@ main {
     overflow: visible;
 }
 
+.leer-mas-container {
+    position: relative;
+    width: 100%;
+    margin-top: 5px;
+}
+
 .leer-mas, .leer-menos {
     color: var(--dorado-oscuro);
-    text-decoration: none;
-    cursor: pointer;
-    font-size: 13px;
-    margin: 5px 0 0 0;
-    display: inline-block;
-    padding: 3px 8px;
-    background: rgba(255, 255, 255, 0.9);
-    border: 1px solid var(--gris-claro);
-    border-radius: 4px;
+    background-color: var(--blanco);
+    border: 1px solid var(--dorado);
+    padding: 5px 12px;
+    border-radius: 15px;
+    font-size: 0.8rem;
     font-weight: 600;
+    cursor: pointer;
+    display: inline-block;
+    margin-top: 8px;
     transition: all 0.2s ease;
+    text-decoration: none !important;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
 }
 
 .leer-mas:hover, .leer-menos:hover {
-    background: var(--dorado-claro);
+    background-color: var(--dorado-claro);
     color: var(--blanco);
+    transform: translateY(-1px);
 }
 
-/* Responsive */
+/* ---------------------------- */
+/* Responsive Design */
+/* ---------------------------- */
 @media (max-width: 768px) {
     .menu-toggle {
         display: block;
@@ -405,7 +417,7 @@ main {
         grid-template-columns: 1fr;
     }
 
-.modal-contenido {
+    .modal-contenido {
         padding: 40px 15px 15px;
     }
     
@@ -431,16 +443,16 @@ main {
     .btn-enviar, .btn-cerrar {
         width: 100%;
         margin: 0;
-        padding: 8px 10px; /* Más compacto verticalmente */
-        font-size: 0.85rem; /* Tamaño de fuente reducido */
-        min-height: auto; /* Elimina altura mínima por defecto */
+        padding: 8px 10px;
+        font-size: 0.85rem;
+        min-height: auto;
     }
     
     .item-carrito {
         display: flex;
         justify-content: space-between;
-        align-items: center; /* Alinea verticalmente */
-        flex-wrap: nowrap; /* Evita saltos de línea */
+        align-items: center;
+        flex-wrap: nowrap;
         gap: 10px;
         margin: 8px 0;
         padding-bottom: 8px;
@@ -448,21 +460,22 @@ main {
     }
 
     .item-carrito span {
-        white-space: nowrap; /* Evita que el texto se divida en múltiples líneas */
+        white-space: nowrap;
         overflow: hidden;
-        text-overflow: ellipsis; /* Añade puntos suspensivos si el texto es muy largo */
+        text-overflow: ellipsis;
     }
 
-     .descripcion {
+    /* Ajustes específicos para "Leer más" en móviles */
+    .descripcion {
         font-size: 15px;
         line-height: 1.5em;
-        max-height: 4.5em; /* Más líneas en móvil */
+        max-height: 4.5em;
     }
     
     .leer-mas, .leer-menos {
-        font-size: 14px;
-        padding: 5px 10px;
-        margin-top: 8px;
+        font-size: 0.85rem;
+        padding: 6px 14px;
+        margin-top: 10px;
         display: inline-flex;
         align-items: center;
         justify-content: center;
@@ -471,15 +484,25 @@ main {
         z-index: 2;
     }
     
-    /* Asegurar que el botón no se oculte */
     .info-producto {
-        position: relative;
-        padding-bottom: 15px; /* Espacio extra para el botón */
+        padding-bottom: 20px;
     }
     
-    /* Mejorar visibilidad en productos */
     .producto {
-        overflow: visible; /* Permite que el botón se vea fuera */
+        overflow: visible;
+    }
+}
+
+/* Estilos para pantallas muy pequeñas */
+@media (max-width: 480px) {
+    .descripcion {
+        font-size: 14px;
+        max-height: 4.2em;
+    }
+    
+    .leer-mas, .leer-menos {
+        font-size: 0.8rem;
+        padding: 5px 12px;
     }
 }
 

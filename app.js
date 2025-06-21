@@ -31,6 +31,7 @@ document.addEventListener('DOMContentLoaded', async () => {
         mostrarError(error);
     }
 });
+
 function renderProductos(productos) {
     const baseUrl = 'https://raw.githubusercontent.com/LuXuzDev/luxury-tresor/main/';
     const baseImagePath = baseUrl + 'images/';
@@ -42,9 +43,41 @@ function renderProductos(productos) {
         "Conjuntos": document.getElementById("conjuntos-container")
     };
 
+    // Limpiar contenedores
     Object.values(contenedores).forEach(container => {
         if (container) container.innerHTML = '';
     });
+
+    // Función para manejar el evento "Leer más"
+    const handleLeerMas = (e) => {
+        e.preventDefault();
+        const descripcionElement = e.target.parentElement;
+        const descCompleta = decodeURIComponent(e.target.getAttribute('data-desc-completa'));
+        descripcionElement.innerHTML = `
+            ${descCompleta} 
+            <a href="#" class="leer-menos">Leer menos</a>
+        `;
+        descripcionElement.classList.add('expandida');
+    };
+
+    // Función para manejar el evento "Leer menos"
+    const handleLeerMenos = (e) => {
+        e.preventDefault();
+        const descripcionElement = e.target.parentElement;
+        const descCompleta = descripcionElement.textContent.replace('Leer menos', '');
+        const descCorta = descCompleta.length > 100 
+            ? descCompleta.substring(0, 100) + '...' 
+            : descCompleta;
+        
+        descripcionElement.innerHTML = `
+            ${descCorta}
+            <a href="#" class="leer-mas" data-desc-completa="${encodeURIComponent(descCompleta)}">Leer más</a>
+        `;
+        descripcionElement.classList.remove('expandida');
+        
+        // Re-asignar el evento
+        descripcionElement.querySelector('.leer-mas').addEventListener('click', handleLeerMas);
+    };
 
     productos.forEach(producto => {
         const container = contenedores[producto.Categoria];
@@ -54,17 +87,20 @@ function renderProductos(productos) {
             ? `${baseImagePath}${producto.Imagen}`
             : `${baseImagePath}placeholder.jpg`;
 
-        // Procesar descripción (limitar a 100 caracteres y agregar "Leer más")
+        // Procesar descripción
         let descripcionHTML = '';
-        if (producto.Descripcion) {
-            const descripcionCorta = producto.Descripcion.length > 100 
+        if (producto.Descripcion && producto.Descripcion.trim() !== '') {
+            const mostrarLeerMas = producto.Descripcion.length > 100;
+            const descripcionCorta = mostrarLeerMas 
                 ? producto.Descripcion.substring(0, 100) + '...' 
                 : producto.Descripcion;
-                
+            
             descripcionHTML = `
                 <p class="descripcion">
                     ${descripcionCorta}
-                    ${producto.Descripcion.length > 100 ? '<a href="#" class="leer-mas" data-desc-completa="' + encodeURIComponent(producto.Descripcion) + '">Leer más</a>' : ''}
+                    ${mostrarLeerMas 
+                        ? `<a href="#" class="leer-mas" data-desc-completa="${encodeURIComponent(producto.Descripcion)}">Leer más</a>` 
+                        : ''}
                 </p>
             `;
         }
@@ -95,38 +131,38 @@ function renderProductos(productos) {
 
         container.insertAdjacentHTML('beforeend', productoHTML);
 
-        // Asignar eventos a los botones recién creados
+        // Asignar eventos
         const productoElement = container.lastElementChild;
-        productoElement.querySelector('.btn-whatsapp')?.addEventListener('click', () => {
-            pedirProductoWhatsApp(producto);
-        });
         
-        productoElement.querySelector('.btn-carrito')?.addEventListener('click', () => {
-            if (producto.Disponible > 0) {
-                agregarAlCarrito(producto);
-            }
-        });
+        // Evento para WhatsApp
+        const btnWhatsapp = productoElement.querySelector('.btn-whatsapp');
+        if (btnWhatsapp) {
+            btnWhatsapp.addEventListener('click', () => pedirProductoWhatsApp(producto));
+        }
+        
+        // Evento para carrito
+        const btnCarrito = productoElement.querySelector('.btn-carrito');
+        if (btnCarrito) {
+            btnCarrito.addEventListener('click', () => {
+                if (producto.Disponible > 0) agregarAlCarrito(producto);
+            });
+        }
+        
+        // Evento para "Leer más"
+        const leerMasBtn = productoElement.querySelector('.leer-mas');
+        if (leerMasBtn) {
+            leerMasBtn.addEventListener('click', handleLeerMas);
+        }
     });
 
-    // Agregar event listeners para los "Leer más"
-    document.querySelectorAll('.leer-mas').forEach(boton => {
-        boton.addEventListener('click', function(e) {
-            e.preventDefault();
-            const descCompleta = decodeURIComponent(this.getAttribute('data-desc-completa'));
-            this.parentElement.innerHTML = descCompleta + ' <a href="#" class="leer-menos">Leer menos</a>';
-        });
-    });
-
-    // Agregar event listeners para los "Leer menos"
-    document.addEventListener('click', function(e) {
+    // Delegación de eventos para "Leer menos" (mejor rendimiento)
+    document.addEventListener('click', (e) => {
         if (e.target.classList.contains('leer-menos')) {
-            e.preventDefault();
-            const descripcionCompleta = e.target.parentElement.textContent.replace('Leer menos', '');
-            const descCorta = descripcionCompleta.substring(0, 100) + '...';
-            e.target.parentElement.innerHTML = descCorta + ' <a href="#" class="leer-mas" data-desc-completa="' + encodeURIComponent(descripcionCompleta) + '">Leer más</a>';
+            handleLeerMenos(e);
         }
     });
 }
+
 function agregarAlCarrito(producto) {
     if (producto.Disponible <= 0) return; // No hacer nada si no hay stock
     

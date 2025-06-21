@@ -427,19 +427,26 @@ footer {
 .descripcion {
     max-height: 3.6em; /* Aprox 3 líneas de texto */
     overflow: hidden;
-    transition: max-height 0.3s ease;
+    transition: all 0.3s ease;
     line-height: 1.2em;
-}
-
-.leer-mas, .leer-menos {
-    color: var(--dorado-claro);
-    text-decoration: underline;
-    cursor: pointer;
-    font-size: 0.9em;
-    margin-left: 5px;
-    display: inline-block;
+    margin: 8px 0;
+    position: relative;
 }
 
 .descripcion.expandida {
     max-height: none;
+    overflow: visible;
+}
+
+.leer-mas, .leer-menos {
+    color: #007bff;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-left: 5px;
+    white-space: nowrap;
+}
+
+.leer-mas:hover, .leer-menos:hover {
+    text-decoration: none;
 }

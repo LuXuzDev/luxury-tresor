@@ -354,21 +354,24 @@ main {
     overflow: visible;
 }
 
-/* Nuevo estilo para el texto "Leer más" en dorado */
-.leer-mas, .leer-menos {
+/* Texto "Ver más" como enlace simple */
+.ver-mas, .ver-menos {
     color: var(--dorado-oscuro);
     font-weight: 600;
     cursor: pointer;
     display: inline;
-    text-decoration: underline;
-    transition: color 0.2s ease;
     font-size: 0.9em;
     margin-left: 5px;
+    background: none;
+    border: none;
+    padding: 0;
+    text-decoration: underline;
+    transition: color 0.2s ease;
 }
 
-.leer-mas:hover, .leer-menos:hover {
+.ver-mas:hover, .ver-menos:hover {
     color: var(--dorado);
-    text-decoration: none;
+    text-decoration: underline;
 }
 
 /* ---------------------------- */
@@ -459,7 +462,7 @@ main {
         max-height: 4.5em;
     }
     
-    .leer-mas, .leer-menos {
+    .ver-mas, .ver-menos {
         font-size: 0.9em;
     }
     

@@ -344,10 +344,9 @@ main {
     overflow: hidden;
     transition: all 0.3s ease;
     line-height: 1.4em;
-    margin: 10px 0 15px 0;
+    margin: 10px 0;
     position: relative;
     font-size: 14px;
-    padding-right: 10px;
 }
 
 .descripcion.expandida {
@@ -355,32 +354,21 @@ main {
     overflow: visible;
 }
 
-.leer-mas-container {
-    position: relative;
-    width: 100%;
-    margin-top: 5px;
-}
-
+/* Nuevo estilo para el texto "Leer más" en dorado */
 .leer-mas, .leer-menos {
     color: var(--dorado-oscuro);
-    background-color: var(--blanco);
-    border: 1px solid var(--dorado);
-    padding: 5px 12px;
-    border-radius: 15px;
-    font-size: 0.8rem;
     font-weight: 600;
     cursor: pointer;
-    display: inline-block;
-    margin-top: 8px;
-    transition: all 0.2s ease;
-    text-decoration: none !important;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+    display: inline;
+    text-decoration: underline;
+    transition: color 0.2s ease;
+    font-size: 0.9em;
+    margin-left: 5px;
 }
 
 .leer-mas:hover, .leer-menos:hover {
-    background-color: var(--dorado-claro);
-    color: var(--blanco);
-    transform: translateY(-1px);
+    color: var(--dorado);
+    text-decoration: none;
 }
 
 /* ---------------------------- */
@@ -465,7 +453,6 @@ main {
         text-overflow: ellipsis;
     }
 
-    /* Ajustes específicos para "Leer más" en móviles */
     .descripcion {
         font-size: 15px;
         line-height: 1.5em;
@@ -473,15 +460,7 @@ main {
     }
     
     .leer-mas, .leer-menos {
-        font-size: 0.85rem;
-        padding: 6px 14px;
-        margin-top: 10px;
-        display: inline-flex;
-        align-items: center;
-        justify-content: center;
-        width: auto;
-        position: relative;
-        z-index: 2;
+        font-size: 0.9em;
     }
     
     .info-producto {
@@ -498,11 +477,6 @@ main {
     .descripcion {
         font-size: 14px;
         max-height: 4.2em;
-    }
-    
-    .leer-mas, .leer-menos {
-        font-size: 0.8rem;
-        padding: 5px 12px;
     }
 }
 

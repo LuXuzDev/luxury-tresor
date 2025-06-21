@@ -66,8 +66,7 @@ function renderProductos(productos) {
                 .replace(/&/g, "&amp;")
                 .replace(/</g, "&lt;")
                 .replace(/>/g, "&gt;")
-                .replace(/>/g, "&gt;")
-                ;
+                .replace(/▸/g, '<span class="vineta">▸</span>');
             
             // Luego manejamos los saltos de línea y formato
             descripcionSegura = descripcionSegura

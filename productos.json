@@ -1,42 +1,302 @@
 [
   {
-    "Nombre": "Floral Elegante",
-    "Precio": 10,
-    "Descripcion": "Presentamos el exclusivo Set Corazón de Obsidiana Noir: joyería en plata negra con zirconias centelleantes, diseñado para mujeres que aman el lujo discreto. Ideal como regalo de San Valentín, aniversario o cumpleaños.",
-    "Cantidad": 10,
-    "Cantidad Vendida": 8,
-    "Disponible": 2,
-    "Imagen": "a.png",
-    "Categoria": "Collares"
+    "Nombre": "Trio Azul Eden",
+    "Precio": 15.5,
+    "Descripcion": "Set de colgante, anillos y aretes que capturan la profundidad del océano con sus piedras azules. Un tributo moderno a la elegancia atemporal.\r\n\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Cadena de aleación metálica con baño de plata.",
+    "Cantidad": 1,
+    "Cantidad Vendida": 0,
+    "Disponible": 1,
+    "Imagen": "trio_azul_eden.png",
+    "Categoria": "Conjuntos"
   },
   {
-    "Nombre": "Corazon Brillante",
-    "Precio": 20,
-    "Descripcion": "Presentamos el exclusivo Set Corazón de Obsidiana Noir: joyería en plata negra con zirconias centelleantes, diseñado para mujeres que aman el lujo discreto. Ideal como regalo de San Valentín, aniversario o cumpleaños",
-    "Cantidad": 5,
-    "Cantidad Vendida": 4,
-    "Disponible": 1,
-    "Imagen": "a.png",
+    "Nombre": "Trío Radiante",
+    "Precio": 16.5,
+    "Descripcion": "Un trío de piezas que celebra la alegría y el color. Anillos vibrantes, collar versátil y aretes llamativos se unen para crear un regalo lleno de personalidad. Materiales:\r\n▸ Perlas de alta calidad (acrílico/resina).\r\n▸ Cadena de aleacion metálica con baño de plata.",
+    "Cantidad": 2,
+    "Cantidad Vendida": 0,
+    "Disponible": 2,
+    "Imagen": "trio_radiante.png",
+    "Categoria": "Conjuntos"
+  },
+  {
+    "Nombre": "Aretes Sencillos",
+    "Precio": 3.5,
+    "Descripcion": "Aretes de moda para mujer de plata 925.\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon)\r\n▸ Aleación metálica con baño de plata",
+    "Cantidad": 36,
+    "Cantidad Vendida": 0,
+    "Disponible": 36,
+    "Imagen": "aretes_sencillos.png",
     "Categoria": "Pendientes"
   },
   {
-  "Nombre": "Solitario Clásico",
-  "Precio": 30,
-  "Descripcion": "Diseño limpio y atemporal, creado para destacar con elegancia discreta. Piezas esenciales que trascienden tendencias.\n\nMaterial:\n▸ Plata 925 bañada en oro 18k.\n▸ Acero quirúrgico hipoalergénico.\n▸ Gemas naturales (opcional: ej. cuarzo, diamante o zafiro).\n\nVersatilidad:\n• Ideal para capas con otras joyas o usarse sola.\n• Transición perfecta de día a noche.\n• Compatible con cualquier estilo: desde outfits minimalistas hasta looks estructurados.",
-  "Cantidad": 6,
-  "Cantidad_Vendida": 3,
-  "Disponible": 3,
-  "Imagen": "a.png",
-  "Categoria": "Pulseras"
-},
+    "Nombre": "Pulseras Sencillas",
+    "Precio": 5.5,
+    "Descripcion": "Pulseras de moda para mujer de plata 925.\r\nMateriales:\r\n▸ Plata 925.",
+    "Cantidad": 5,
+    "Cantidad Vendida": 0,
+    "Disponible": 5,
+    "Imagen": "pulsera_sencillas.png",
+    "Categoria": "Pulseras"
+  },
   {
-    "Nombre": "Ocean",
-    "Precio": 40,
-    "Descripcion": "Presentamos el exclusivo Set Corazón de Obsidiana Noir: joyería en plata negra con zirconias centelleantes, diseñado para mujeres que aman el lujo discreto. Ideal como regalo de San Valentín, aniversario o cumpleaños",
-    "Cantidad": 4,
-    "Cantidad Vendida": 1,
-    "Disponible": 3,
-    "Imagen": "img_conjunto_ocean.png",
+    "Nombre": "Lágrimas Brillantes",
+    "Precio": 5,
+    "Descripcion": "Aretes de moda para mujer de plata 925.\r\nMateriales\r\n▸ Perlas de alta calidad (acrílico/resina/zircon)\r\n▸ Aleación metálica con baño de plata",
+    "Cantidad": 12,
+    "Cantidad Vendida": 0,
+    "Disponible": 12,
+    "Imagen": "lagrimas_brillantes.png",
+    "Categoria": "Pendientes"
+  },
+  {
+    "Nombre": "Pulsera Torcida",
+    "Precio": 8.5,
+    "Descripcion": "Pulsera elegante de plata 925.\r\nMateriales:\r\n▸ Plata 925.",
+    "Cantidad": 2,
+    "Cantidad Vendida": 0,
+    "Disponible": 2,
+    "Imagen": "pulsera_torcida.png",
+    "Categoria": "Pulseras"
+  },
+  {
+    "Nombre": "Bosque Encantado",
+    "Precio": 17,
+    "Descripcion": "Amor que brilla con luz propia. Este conjunto con zirconias cúbicas verdes captura la esencia de lo romántico.\r\n\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon)\r\n▸ Cadena de aleación metálica con baño de plata.",
+    "Cantidad": 1,
+    "Cantidad Vendida": 0,
+    "Disponible": 1,
+    "Imagen": "bosque_encantado.png",
     "Categoria": "Conjuntos"
+  },
+  {
+    "Nombre": "Fragmentos de Luna",
+    "Precio": 16.5,
+    "Descripcion": "Amor que brilla con luz propia. Este conjunto con zirconias cúbicas captura la esencia de lo romántico.\r\n\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Cadena de aleación metálica con baño de plata.",
+    "Cantidad": 1,
+    "Cantidad Vendida": 0,
+    "Disponible": 1,
+    "Imagen": "fragmentos_luna.png",
+    "Categoria": "Conjuntos"
+  },
+  {
+    "Nombre": "Luz de Alba",
+    "Precio": 12,
+    "Descripcion": "La pureza del amanecer capturada en joyas. Este conjunto con zirconias cúbicas blancas irradia una elegancia serena, perfecta para quienes buscan brillar con luz propia en momentos especiales.\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon)\r\n▸ Cadena de aleación metálica con baño de plata.",
+    "Cantidad": 1,
+    "Cantidad Vendida": 0,
+    "Disponible": 1,
+    "Imagen": "luz_alba.png",
+    "Categoria": "Conjuntos"
+  },
+  {
+    "Nombre": "Susurro de Corazones",
+    "Precio": 12,
+    "Descripcion": "El lenguaje silencioso del amor hecho joya. Este conjunto con delicados corazones y zirconias cúbicas captura la esencia de lo romántico: gestos pequeños que dicen todo.\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Cadena de aleación metálica con baño de plata.",
+    "Cantidad": 1,
+    "Cantidad Vendida": 0,
+    "Disponible": 1,
+    "Imagen": "susurro_corazones.png",
+    "Categoria": "Conjuntos"
+  },
+  {
+    "Nombre": "Angel Alado",
+    "Precio": 10,
+    "Descripcion": "Libertad y luz en cada movimiento. Esta pulsera combina la delicadeza de un diseño alado con el destello de piedras naturales.\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Cadena de aleación metálica con baño de plata.",
+    "Cantidad": 1,
+    "Cantidad Vendida": 0,
+    "Disponible": 1,
+    "Imagen": "angel_alado.png",
+    "Categoria": "Pulseras"
+  },
+  {
+    "Nombre": "Lazo Eterno",
+    "Precio": 18,
+    "Descripcion": "Dos mitades que encuentran su equilibrio. Estos anillos geométricos fusionan diseño vanguardista y simbolismo atemporal: líneas puras que se completan, como historias que se entrelazan.\r\nMateriales:\r\n▸ Cadena de aleación metálica con baño de plata)",
+    "Cantidad": 1,
+    "Cantidad Vendida": 0,
+    "Disponible": 1,
+    "Imagen": "lazo_eterno.png",
+    "Categoria": "Anillos"
+  },
+  {
+    "Nombre": "Guardian de Hierro",
+    "Precio": 10,
+    "Descripcion": "Poder grabado en metal. Este brazalete de estilo guerrero combina símbolos ancestrales y un diseño robusto, creado para quienes llevan su fuerza tanto en las manos como en sus convicciones.\r\nMateriales:\r\n▸ Cadena de aleación metálica con baño de plata)",
+    "Cantidad": 1,
+    "Cantidad Vendida": 0,
+    "Disponible": 1,
+    "Imagen": "guardian_hierro.png",
+    "Categoria": "Pulseras"
+  },
+  {
+    "Nombre": "El Faro",
+    "Precio": 10,
+    "Descripcion": "Como el destello de un faro en la tormenta, esta lágrima atrapa y refracta la luz. Un símbolo de resiliencia brillante: elegante para iluminar noches de gala, íntimo para recordar que hasta las lágrimas pueden convertirse en luz.\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Cadena de aleación metálica con baño de plata.",
+    "Cantidad": 1,
+    "Cantidad Vendida": 0,
+    "Disponible": 1,
+    "Imagen": "faro.png",
+    "Categoria": "Collares"
+  },
+  {
+    "Nombre": "Vena Verde",
+    "Precio": 17,
+    "Descripcion": "El verde que hipnotizó a Cleopatra, ahora en tu piel. Este trío de circonitas cuadradas evoca el glamour de los años 50 con un toque de audacia moderna.\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Cadena de aleación metálica con baño de plata.",
+    "Cantidad": 1,
+    "Cantidad Vendida": 0,
+    "Disponible": 1,
+    "Imagen": "vena_verde.png",
+    "Categoria": "Conjuntos"
+  },
+  {
+    "Nombre": "Suerte Helada",
+    "Precio": 11,
+    "Descripcion": "El invierno no es silencio, es un secreto grabado. Este juego de anillos entrelaza el rigor del ratán y el misterio del ojo de caballo azul, como un diálogo entre la tierra dormida y el cielo helado. \r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Aleación metálica con baño de plata.",
+    "Cantidad": 1,
+    "Cantidad Vendida": 0,
+    "Disponible": 1,
+    "Imagen": "suerte_helada.png",
+    "Categoria": "Anillos"
+  },
+  {
+    "Nombre": "Luminaria Eterna",
+    "Precio": 10,
+    "Descripcion": "Dos destinos que brillan en paralelo. Estos anillos de zirconia cúbica cuadrada - fríos como el hielo estelar y cálidos como el núcleo de un sol - son espejos cósmicos donde vuestros compromisos se reflejan. \r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Cadena de aleación metálica con baño de plata.",
+    "Cantidad": 1,
+    "Cantidad Vendida": 0,
+    "Disponible": 1,
+    "Imagen": "luminaria_eterna.png",
+    "Categoria": "Anillos"
+  },
+  {
+    "Nombre": "Noche Eterna",
+    "Precio": 14,
+    "Descripcion": "Amor que no conoce el ocaso. Estos anillos reinventan el símbolo del corazón con una estética gótica: donde otros ven romance, nosotros tallamos poesía oscura\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Cadena de aleación metálica con baño de plata.",
+    "Cantidad": 1,
+    "Cantidad Vendida": 0,
+    "Disponible": 1,
+    "Imagen": "noche_eterna.png",
+    "Categoria": "Anillos"
+  },
+  {
+    "Nombre": "Susurros de Plata",
+    "Precio": 10,
+    "Descripcion": "Latidos capturados en metal noble. Estos pendientes con forma de corazón herido son joyería gótica con alma de poema prohibido: llevan la elegancia decadente de un amor que se niega a morir, incluso cuando debería.\r\nMateriales:\r\n▸ Cadena de aleación metálica con baño de plata.",
+    "Cantidad": 1,
+    "Cantidad Vendida": 0,
+    "Disponible": 1,
+    "Imagen": "susurros_plata.png",
+    "Categoria": "Anillos"
+  },
+  {
+    "Nombre": "Lagrima de Angel",
+    "Precio": 10,
+    "Descripcion": "Una lágrima solidificada del cielo. Este colgante con amatista sintética captura la esencia de lo etéreo: donde el dolor se transfigura en belleza, y las historias no contadas brillan en tonos violeta al sol.\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Cadena de aleación metálica con baño de plata.",
+    "Cantidad": 1,
+    "Cantidad Vendida": 0,
+    "Disponible": 1,
+    "Imagen": "lagrima_angel.png",
+    "Categoria": "Collares"
+  },
+  {
+    "Nombre": "Pulsera de Plata",
+    "Precio": 9,
+    "Descripcion": "Pulsera elegante de plata 925, estilo clásico versátil.\r\nMateriales:\r\n▸ Plata 925.",
+    "Cantidad": 2,
+    "Cantidad Vendida": 0,
+    "Disponible": 2,
+    "Imagen": "pulsera_plata.png",
+    "Categoria": "Pulseras"
+  },
+  {
+    "Nombre": "Corazon de Hada",
+    "Precio": 8.5,
+    "Descripcion": "Polvo de atardecer mágico solidificado. Este brazalete con moissanita rosa paloma guarda el secreto de las hadas: donde el amor no es un hechizo, sino el lenguaje natural de las almas gemelas. \r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon)\r\n▸ Cadena de aleación metálica con baño de plata)",
+    "Cantidad": 1,
+    "Cantidad Vendida": 0,
+    "Disponible": 1,
+    "Imagen": "corazon_hada.png",
+    "Categoria": "Pulseras"
+  },
+  {
+    "Nombre": "Dualidad Nocturna",
+    "Precio": 13,
+    "Descripcion": "Amor en clave de luna y sombra. Este juego de pendientes y colgante con corazones negros es un diálogo entre la elegancia plateada y la audacia oscura. \r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Cadena de aleación metálica con baño de plata.",
+    "Cantidad": 1,
+    "Cantidad Vendida": 0,
+    "Disponible": 1,
+    "Imagen": "dualidad_nocturna.png",
+    "Categoria": "Conjuntos"
+  },
+  {
+    "Nombre": "Serenidad",
+    "Precio": 20,
+    "Descripcion": "Como un suspiro del cielo en tu piel. Este trío con piedras celestes es un recordatorio de que la suerte y la serenidad van de la mano. \r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Cadena de aleación metálica con baño de plata.",
+    "Cantidad": 1,
+    "Cantidad Vendida": 0,
+    "Disponible": 1,
+    "Imagen": "serenidad.png",
+    "Categoria": "Conjuntos"
+  },
+  {
+    "Nombre": "Luz Eterna",
+    "Precio": 11.5,
+    "Descripcion": "Un destello de eternidad suspendido. Este collar con dije de moissanita des la materialización de un juramento: la promesa de que algunos brillos nunca se apagarán, incluso en las noches más largas.\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Cadena de aleación metálica con baño de plata.",
+    "Cantidad": 1,
+    "Cantidad Vendida": 0,
+    "Disponible": 1,
+    "Imagen": "luz_eterna.png",
+    "Categoria": "Collares"
+  },
+  {
+    "Nombre": "Lagrimas de Amastita",
+    "Precio": 10.5,
+    "Descripcion": "Lágrimas convertidas en arte. Estos aretes balancean drama y delicadeza.\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon)\r\n▸ Cadena de aleación metálica con baño de plata.",
+    "Cantidad": 1,
+    "Cantidad Vendida": 0,
+    "Disponible": 1,
+    "Imagen": "lagrimas_amastita.png",
+    "Categoria": "Pendientes"
+  },
+  {
+    "Nombre": "Pulseras",
+    "Precio": 5.5,
+    "Descripcion": "Pulseras de moda para mujer de plata 925, estilo clásico versátil.\r\nMateriales:\r\n▸ Plata 925.",
+    "Cantidad": 11,
+    "Cantidad Vendida": 0,
+    "Disponible": 11,
+    "Imagen": "pulseras.png",
+    "Categoria": "Pulseras"
+  },
+  {
+    "Nombre": "Espiral Eterna",
+    "Precio": 15,
+    "Descripcion": "Un torbellino de plata capturando destellos. Este anillo de diseño retorcido  con circonitas cúbicas es la materialización de un amor que se entrelaza infinitamente.\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon)\r\n▸ Aleación metálica con baño de plata)",
+    "Cantidad": 1,
+    "Cantidad Vendida": 0,
+    "Disponible": 1,
+    "Imagen": "espiral_eterna.png",
+    "Categoria": "Anillos"
+  },
+  {
+    "Nombre": "Geometría Sagrada",
+    "Precio": 12,
+    "Descripcion": "Ángeles que bailan en tus orejas. Estos pendientes colgantes con circonitas cúbicas transforman la geometría en poesía.\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Cadena de aleación metálica con baño de plata.",
+    "Cantidad": 1,
+    "Cantidad Vendida": 0,
+    "Disponible": 1,
+    "Imagen": "geometria_sagrada.png",
+    "Categoria": "Pendientes"
+  },
+  {
+    "Nombre": "Neblina Metálica",
+    "Precio": 10,
+    "Descripcion": "La poesía exacta de las líneas perfectas. Este collar plateado de diseño geométrico es la materialización de ese instante en que la luna se alinea con el sol.\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Cadena de aleación metálica con baño de plata.",
+    "Cantidad": 3,
+    "Cantidad Vendida": 0,
+    "Disponible": 3,
+    "Imagen": "neblina_metalica.png",
+    "Categoria": "Collares"
   }
 ]

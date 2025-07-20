@@ -1,8 +1,8 @@
 [
   {
     "Nombre": "Trio Azul Eden",
-    "Precio": 15.5,
-    "Descripcion": "Set de colgante, anillos y aretes que capturan la profundidad del océano con sus piedras azules. Un tributo moderno a la elegancia atemporal.\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Cadena de aleación metálica con baño de plata.",
+    "Precio": 15,
+    "Descripcion": "Set de colgante, anillos y aretes que capturan la profundidad del océano con sus piedras azules. Un tributo moderno a la elegancia atemporal.\r\n\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Cadena de aleación metálica con baño de plata.",
     "Cantidad": 1,
     "Cantidad Vendida": 0,
     "Disponible": 1,
@@ -11,8 +11,8 @@
   },
   {
     "Nombre": "Trío Radiante",
-    "Precio": 16.5,
-    "Descripcion": "Un trío de piezas que celebra la alegría y el color. Anillos vibrantes, collar versátil y aretes llamativos se unen para crear un regalo lleno de personalidad.\r\n Materiales:\r\n▸ Perlas de alta calidad (acrílico/resina).\r\n▸ Cadena de aleacion metálica con baño de plata.",
+    "Precio": 17,
+    "Descripcion": "Un trío de piezas que celebra la alegría y el color. Anillos vibrantes, collar versátil y aretes llamativos se unen para crear un regalo lleno de personalidad. Materiales:\r\n▸ Perlas de alta calidad (acrílico/resina).\r\n▸ Cadena de aleacion metálica con baño de plata.",
     "Cantidad": 2,
     "Cantidad Vendida": 0,
     "Disponible": 2,
@@ -21,8 +21,8 @@
   },
   {
     "Nombre": "Aretes Sencillos",
-    "Precio": 3.5,
-    "Descripcion": "Aretes de moda..\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon)\r\n▸ Aleación metálica con baño de plata.",
+    "Precio": 3,
+    "Descripcion": "Aretes de moda para mujer de plata 925.\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon)\r\n▸ Aleación metálica con baño de plata",
     "Cantidad": 36,
     "Cantidad Vendida": 0,
     "Disponible": 36,
@@ -31,18 +31,18 @@
   },
   {
     "Nombre": "Pulseras Sencillas",
-    "Precio": 5.5,
+    "Precio": 5,
     "Descripcion": "Pulseras de moda para mujer de plata 925.\r\nMateriales:\r\n▸ Plata 925.",
     "Cantidad": 5,
     "Cantidad Vendida": 0,
     "Disponible": 5,
-    "Imagen": "pulseras_sencillas.png",
+    "Imagen": "pulsera_sencillas.png",
     "Categoria": "Pulseras"
   },
   {
     "Nombre": "Lágrimas Brillantes",
     "Precio": 5,
-    "Descripcion": "Aretes de moda para mujer.\r\nMateriales\r\n▸ Perlas de alta calidad (acrílico/resina/zircon)\r\n▸ Aleación metálica con baño de plata.",
+    "Descripcion": "Aretes de moda para mujer de plata 925.\r\nMateriales\r\n▸ Perlas de alta calidad (acrílico/resina/zircon)\r\n▸ Aleación metálica con baño de plata",
     "Cantidad": 12,
     "Cantidad Vendida": 0,
     "Disponible": 12,
@@ -51,7 +51,7 @@
   },
   {
     "Nombre": "Pulsera Torcida",
-    "Precio": 8.5,
+    "Precio": 9,
     "Descripcion": "Pulsera elegante de plata 925.\r\nMateriales:\r\n▸ Plata 925.",
     "Cantidad": 2,
     "Cantidad Vendida": 0,
@@ -62,7 +62,7 @@
   {
     "Nombre": "Bosque Encantado",
     "Precio": 17,
-    "Descripcion": "Amor que brilla con luz propia. Este conjunto con zirconias cúbicas verdes captura la esencia mas natural de lo romántico.\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon)\r\n▸ Cadena de aleación metálica con baño de plata.",
+    "Descripcion": "Amor que brilla con luz propia. Este conjunto con zirconias cúbicas verdes captura la esencia de lo romántico.\r\n\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon)\r\n▸ Cadena de aleación metálica con baño de plata.",
     "Cantidad": 1,
     "Cantidad Vendida": 0,
     "Disponible": 1,
@@ -71,7 +71,7 @@
   },
   {
     "Nombre": "Fragmentos de Luna",
-    "Precio": 16.5,
+    "Precio": 17,
     "Descripcion": "Amor que brilla con luz propia. Este conjunto con zirconias cúbicas captura la esencia de lo romántico.\r\n\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Cadena de aleación metálica con baño de plata.",
     "Cantidad": 1,
     "Cantidad Vendida": 0,
@@ -81,7 +81,7 @@
   },
   {
     "Nombre": "Luz de Alba",
-    "Precio": 12,
+    "Precio": 11,
     "Descripcion": "La pureza del amanecer capturada en joyas. Este conjunto con zirconias cúbicas blancas irradia una elegancia serena, perfecta para quienes buscan brillar con luz propia en momentos especiales.\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon)\r\n▸ Cadena de aleación metálica con baño de plata.",
     "Cantidad": 1,
     "Cantidad Vendida": 0,
@@ -91,7 +91,7 @@
   },
   {
     "Nombre": "Susurro de Corazones",
-    "Precio": 12,
+    "Precio": 13,
     "Descripcion": "El lenguaje silencioso del amor hecho joya. Este conjunto con delicados corazones y zirconias cúbicas captura la esencia de lo romántico: gestos pequeños que dicen todo.\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Cadena de aleación metálica con baño de plata.",
     "Cantidad": 1,
     "Cantidad Vendida": 0,
@@ -101,7 +101,7 @@
   },
   {
     "Nombre": "Angel Alado",
-    "Precio": 10,
+    "Precio": 9,
     "Descripcion": "Libertad y luz en cada movimiento. Esta pulsera combina la delicadeza de un diseño alado con el destello de piedras naturales.\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Cadena de aleación metálica con baño de plata.",
     "Cantidad": 1,
     "Cantidad Vendida": 0,
@@ -111,7 +111,7 @@
   },
   {
     "Nombre": "Lazo Eterno",
-    "Precio": 18,
+    "Precio": 17,
     "Descripcion": "Dos mitades que encuentran su equilibrio. Estos anillos geométricos fusionan diseño vanguardista y simbolismo atemporal: líneas puras que se completan, como historias que se entrelazan.\r\nMateriales:\r\n▸ Cadena de aleación metálica con baño de plata)",
     "Cantidad": 1,
     "Cantidad Vendida": 0,
@@ -121,7 +121,7 @@
   },
   {
     "Nombre": "Guardian de Hierro",
-    "Precio": 10,
+    "Precio": 9,
     "Descripcion": "Poder grabado en metal. Este brazalete de estilo guerrero combina símbolos ancestrales y un diseño robusto, creado para quienes llevan su fuerza tanto en las manos como en sus convicciones.\r\nMateriales:\r\n▸ Cadena de aleación metálica con baño de plata)",
     "Cantidad": 1,
     "Cantidad Vendida": 0,
@@ -131,7 +131,7 @@
   },
   {
     "Nombre": "El Faro",
-    "Precio": 10,
+    "Precio": 11,
     "Descripcion": "Como el destello de un faro en la tormenta, esta lágrima atrapa y refracta la luz. Un símbolo de resiliencia brillante: elegante para iluminar noches de gala, íntimo para recordar que hasta las lágrimas pueden convertirse en luz.\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Cadena de aleación metálica con baño de plata.",
     "Cantidad": 1,
     "Cantidad Vendida": 0,
@@ -161,7 +161,7 @@
   },
   {
     "Nombre": "Luminaria Eterna",
-    "Precio": 10,
+    "Precio": 9,
     "Descripcion": "Dos destinos que brillan en paralelo. Estos anillos de zirconia cúbica cuadrada - fríos como el hielo estelar y cálidos como el núcleo de un sol - son espejos cósmicos donde vuestros compromisos se reflejan. \r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Cadena de aleación metálica con baño de plata.",
     "Cantidad": 1,
     "Cantidad Vendida": 0,
@@ -171,7 +171,7 @@
   },
   {
     "Nombre": "Noche Eterna",
-    "Precio": 14,
+    "Precio": 15,
     "Descripcion": "Amor que no conoce el ocaso. Estos anillos reinventan el símbolo del corazón con una estética gótica: donde otros ven romance, nosotros tallamos poesía oscura\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Cadena de aleación metálica con baño de plata.",
     "Cantidad": 1,
     "Cantidad Vendida": 0,
@@ -181,7 +181,7 @@
   },
   {
     "Nombre": "Susurros de Plata",
-    "Precio": 10,
+    "Precio": 9,
     "Descripcion": "Latidos capturados en metal noble. Estos pendientes con forma de corazón herido son joyería gótica con alma de poema prohibido: llevan la elegancia decadente de un amor que se niega a morir, incluso cuando debería.\r\nMateriales:\r\n▸ Cadena de aleación metálica con baño de plata.",
     "Cantidad": 1,
     "Cantidad Vendida": 0,
@@ -191,7 +191,7 @@
   },
   {
     "Nombre": "Lagrima de Angel",
-    "Precio": 10,
+    "Precio": 11,
     "Descripcion": "Una lágrima solidificada del cielo. Este colgante con amatista sintética captura la esencia de lo etéreo: donde el dolor se transfigura en belleza, y las historias no contadas brillan en tonos violeta al sol.\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Cadena de aleación metálica con baño de plata.",
     "Cantidad": 1,
     "Cantidad Vendida": 0,
@@ -211,7 +211,7 @@
   },
   {
     "Nombre": "Corazon de Hada",
-    "Precio": 8.5,
+    "Precio": 9,
     "Descripcion": "Polvo de atardecer mágico solidificado. Este brazalete con moissanita rosa paloma guarda el secreto de las hadas: donde el amor no es un hechizo, sino el lenguaje natural de las almas gemelas. \r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon)\r\n▸ Cadena de aleación metálica con baño de plata)",
     "Cantidad": 1,
     "Cantidad Vendida": 0,
@@ -231,7 +231,7 @@
   },
   {
     "Nombre": "Serenidad",
-    "Precio": 20,
+    "Precio": 19,
     "Descripcion": "Como un suspiro del cielo en tu piel. Este trío con piedras celestes es un recordatorio de que la suerte y la serenidad van de la mano. \r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Cadena de aleación metálica con baño de plata.",
     "Cantidad": 1,
     "Cantidad Vendida": 0,
@@ -241,7 +241,7 @@
   },
   {
     "Nombre": "Luz Eterna",
-    "Precio": 11.5,
+    "Precio": 13,
     "Descripcion": "Un destello de eternidad suspendido. Este collar con dije de moissanita des la materialización de un juramento: la promesa de que algunos brillos nunca se apagarán, incluso en las noches más largas.\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Cadena de aleación metálica con baño de plata.",
     "Cantidad": 1,
     "Cantidad Vendida": 0,
@@ -251,7 +251,7 @@
   },
   {
     "Nombre": "Lagrimas de Amastita",
-    "Precio": 10.5,
+    "Precio": 11,
     "Descripcion": "Lágrimas convertidas en arte. Estos aretes balancean drama y delicadeza.\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon)\r\n▸ Cadena de aleación metálica con baño de plata.",
     "Cantidad": 1,
     "Cantidad Vendida": 0,
@@ -261,7 +261,7 @@
   },
   {
     "Nombre": "Pulseras",
-    "Precio": 5.5,
+    "Precio": 5,
     "Descripcion": "Pulseras de moda para mujer de plata 925, estilo clásico versátil.\r\nMateriales:\r\n▸ Plata 925.",
     "Cantidad": 11,
     "Cantidad Vendida": 0,
@@ -272,7 +272,7 @@
   {
     "Nombre": "Espiral Eterna",
     "Precio": 15,
-    "Descripcion": "Un torbellino de plata capturando destellos. Este anillo de diseño retorcido  con circonitas cúbicas es la materialización de un amor que se entrelaza infinitamente.\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon)\r\n▸ Aleación metálica con baño de plata.",
+    "Descripcion": "Un torbellino de plata capturando destellos. Este anillo de diseño retorcido  con circonitas cúbicas es la materialización de un amor que se entrelaza infinitamente.\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon)\r\n▸ Aleación metálica con baño de plata)",
     "Cantidad": 1,
     "Cantidad Vendida": 0,
     "Disponible": 1,
@@ -281,7 +281,7 @@
   },
   {
     "Nombre": "Geometría Sagrada",
-    "Precio": 12,
+    "Precio": 13,
     "Descripcion": "Ángeles que bailan en tus orejas. Estos pendientes colgantes con circonitas cúbicas transforman la geometría en poesía.\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Cadena de aleación metálica con baño de plata.",
     "Cantidad": 1,
     "Cantidad Vendida": 0,
@@ -291,7 +291,7 @@
   },
   {
     "Nombre": "Neblina Metálica",
-    "Precio": 10,
+    "Precio": 9,
     "Descripcion": "La poesía exacta de las líneas perfectas. Este collar plateado de diseño geométrico es la materialización de ese instante en que la luna se alinea con el sol.\r\nMateriales:\r\n▸ Perlas de alta calidad (acrílico/resina/zircon).\r\n▸ Cadena de aleación metálica con baño de plata.",
     "Cantidad": 3,
     "Cantidad Vendida": 0,

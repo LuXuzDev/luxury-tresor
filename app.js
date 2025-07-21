@@ -56,7 +56,7 @@ function renderProductos(productos) {
 
         const imagenUrl = producto.Imagen 
     ? `${baseImagePath}${producto.Imagen}`
-    : `${baseImagePath}placeholder.jpg`;
+    : `${baseImagePath}placeholder.png`;
 
         // Procesar descripción manteniendo saltos de línea y formato
         let descripcionHTML = '';

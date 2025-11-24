@@ -21,13 +21,18 @@ function renderProductos(productos) {
         const imagen = prod.Imagen ? baseUrl + prod.Imagen : baseUrl + "placeholder.png";
 
         const html = `
-            <div class="producto">
-                <img src="${imagen}" alt="${prod.Nombre}">
-                <h3>${prod.Nombre}</h3>
-                <p class="precio">$${prod.Precio} USD</p>
-                <button class="btn-whatsapp" onclick="pedirWhatsApp('${prod.Nombre}')">
-                    Pedir por WhatsApp
-                </button>
+            <div class="producto luxury-card">
+                <div class="producto-imagen">
+                    <img src="${imagen}" alt="producto">
+                </div>
+
+                <div class="producto-info">
+                    <p class="precio">$${prod.Precio} USD</p>
+
+                    <button class="btn-whatsapp" onclick="pedirWhatsApp('${prod.Nombre}')">
+                        Pedir por WhatsApp
+                    </button>
+                </div>
             </div>
         `;
 

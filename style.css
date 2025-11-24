@@ -1,7 +1,7 @@
 /* --- GENERAL --- */
 body {
     font-family: Arial, sans-serif;
-    background: #0b0b0b;
+    background: #ffffff;
     padding: 20px;
     color: white;
 }
@@ -21,8 +21,6 @@ h1 {
 /* --- CARD DE PRODUCTO (LUJO) --- */
 .producto.luxury-card {
     background: #0e0d0a;
-    border: 2px solid rgb(180, 171, 0);
-    border-radius: 16px;
     padding: 18px;
     text-align: center;
 
@@ -40,7 +38,7 @@ h1 {
     width: 100%;
     border-radius: 14px;
     border: 2px solid rgba(180, 171, 0, 0.6);
-    background: black;
+    background: rgb(255, 255, 255);
 
     box-shadow: 0 0 12px rgba(180, 171, 0, 0.35);
 }
@@ -57,7 +55,7 @@ h1 {
 /* BOTÓN WHATSAPP (DORADO) */
 .btn-whatsapp {
     background: rgb(180, 171, 0);
-    color: #0e0d0a;
+    color: #ffffff;
     padding: 12px 14px;
     border: none;
     border-radius: 10px;
